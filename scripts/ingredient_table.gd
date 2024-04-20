@@ -21,7 +21,7 @@ func _ready():
 	pass # Replace with function body.
 
 func create_ing(marker: Marker2D, res: ing_res):
-	var ing_prefab = preload("res://ingredient.tscn")
+	var ing_prefab = preload("res://prefabs/ingredient.tscn")
 	var ing = ing_prefab.instantiate()
 	ing.init(res)
 	ing.transform.origin = marker.transform.origin

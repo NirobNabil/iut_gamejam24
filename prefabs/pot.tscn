@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddiha2u3vtvio"]
 
 [ext_resource type="Texture2D" uid="uid://sjxg5ft54e15" path="res://textures/pot.png" id="1_0gkce"]
-[ext_resource type="Script" path="res://scripts/pot.gd" id="1_doenw"]
+[ext_resource type="Script" path="res://scripts/pot.gd" id="1_ral8f"]
 [ext_resource type="Texture2D" uid="uid://x2fnmj70qwfn" path="res://textures/cooking.jpeg" id="2_iut1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(134, 63)
 
 [node name="pot" type="Node2D"]
-script = ExtResource("1_doenw")
+script = ExtResource("1_ral8f")
 cooking_texture = ExtResource("2_iut1a")
 idle_texture = ExtResource("1_0gkce")
 
@@ -33,6 +33,12 @@ scale = Vector2(1, 0.76)
 process_callback = 0
 wait_time = 2.449
 one_shot = true
+
+[node name="StatusLabel" type="Label" parent="."]
+offset_left = -91.0
+offset_top = -11.0
+offset_right = -51.0
+offset_bottom = 12.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

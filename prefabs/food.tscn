@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b60s6w06des4c"]
+[gd_scene load_steps=5 format=3 uid="uid://b60s6w06des4c"]
 
-[ext_resource type="Script" path="res://scripts/ingredient.gd" id="1_e4jua"]
-[ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_2yhbt"]
+[ext_resource type="Script" path="res://scripts/food.gd" id="1_4ntrd"]
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_2baii"]
 [ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="4_s5uq2"]
 
@@ -9,8 +8,7 @@
 size = Vector2(62, 123)
 
 [node name="food" type="Node2D"]
-script = ExtResource("1_e4jua")
-texture = ExtResource("2_2yhbt")
+script = ExtResource("1_4ntrd")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0738281, 0.071875)

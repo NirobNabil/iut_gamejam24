@@ -8,6 +8,7 @@ signal selected_ing(ing_node)
 
 var obj_name = ing_name
 var obj_type: String = "ing"
+var spice_level: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,7 @@ func _ready():
 func init(res: ing_res):
 	ing_name = res.ing_name
 	obj_name = ing_name ## bad naming fix later
+	spice_level = res.spice_level
 	get_node("sprite").texture = res.texture
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

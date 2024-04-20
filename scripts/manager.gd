@@ -25,6 +25,9 @@ func handle_target_reached():
 		handle_pot_action(target)
 	elif target.obj_type == "bin":
 		handle_bin_action(target)
+	elif target.obj_type == "table":
+		handle_table_action(target)
+
 
 func handle_pot_action(pot):
 	if $Player.carrying != null:
@@ -34,7 +37,24 @@ func handle_pot_action(pot):
 		else :
 			$Player.set_info(status)
 	else:
-		$Player.set_info("Not carrying any ingredient")
+		if pot.cookedFood != null:
+			$Player.carry_obj( pot.pickup_food() )
+		else:
+			$Player.set_info("Not carrying any ingredient")
+
+
+## this func is a mess
+func handle_table_action(table):
+	var obj = $Player.carrying
+	if obj != null and obj.obj_type != "food":
+		$Player.set_info("Only cooked food can be served")
+		return
+	var status: String = $Player.drop_obj()
+	print(status)
+	if status != "success":
+		$Player.set_info(status)
+		return
+	status = table.put_food(obj)
 
 func handle_ing_action(ing):
 	var status: String = $Player.carry_obj(ing)
@@ -42,7 +62,6 @@ func handle_ing_action(ing):
 		$Player.set_info(status)
 
 func handle_bin_action(bin):
-	print("came to bin")
 	var status = $Player.drop_obj()
 	if status != "success":
 		$Player.set_info( status )
@@ -59,6 +78,7 @@ func check_and_set_reached(node: Node2D):
 		target_reached = false
 
 
+
 func _on_ingredient_table_ing_area_entered(ing_node):
 	check_and_set_reached(ing_node)
 
@@ -67,6 +87,11 @@ func _on_pot_area_entered(pot_node):
 
 func _on_bin_entered_area(bin_node):
 	check_and_set_reached(bin_node)
+	
+func _on_table_area_entered(table_node):
+	check_and_set_reached(table_node)
+
+
 
 
 func _on_ingredient_table_ing_selected(ing_node):
@@ -77,4 +102,11 @@ func _on_pot_selected(pot_node):
 
 func _on_bin_selected_bin(bin_node):
 	set_target(bin_node)
+	
+func _on_table_selected(table_node):
+	set_target(table_node)
+	
 
+
+func _on_table_score_obtained(score):
+	$Hud/ScoreContainer.text = str( int($Hud/ScoreContainer.text) + int(score) )

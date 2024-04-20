@@ -11,9 +11,10 @@ var obj_type: String = "pot"
 
 const cooking_time: float = 5.0
 
-var contains: Array[String]
+var contains: Array[Node2D]
 var isCooking: bool = false
 var isCooked: bool = false
+var cookedFood: Node2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +26,7 @@ func _process(delta):
 	if isCooking:
 		$ProgressBar.visible = true
 		if $Timer.time_left == 0:
-			stop_cooking()
+			set_food_ready()
 			$ProgressBar.visible = false
 		else:
 			print($Timer.time_left)
@@ -34,15 +35,49 @@ func _process(delta):
 		$ProgressBar.visible = false
 	pass
 
+
+#### Handle cooking
+
 func start_cooking():
 	isCooking = true;
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
-	
+
+func check_ing_already_exists(ing_node):
+	for ing in contains:
+		if ing.ing_name == ing_node.ing_name:
+			return true
+	return false
+
+func set_food_ready():
+	if cookedFood != null:
+		return
+	var food = load("res://prefabs/food.tscn").instantiate()
+	food.visible = false
+	food.hotness = 100
+	for ing in contains:
+		food.spice_level += ing.spice_level 
+	cookedFood = food
+	print(cookedFood)
+	#add_child(cookedFood)  ### adding child will cause area entered singgnal to be fired
+	$StatusLabel.text = "food ready"
+	#$sprite.texture = idle_texture
+
 func stop_cooking():
-	isCooking = true;
+	contains = []
+	isCooking = false
 	$sprite.texture = idle_texture
 	
+	
+func pickup_food():
+	var food = cookedFood
+	cookedFood = null
+	$StatusLabel.text = ""
+	stop_cooking()
+	return food
+
+
+#### handle ingredient adding
 
 func update_ingredient_effects():
 	print("Ingredients in pot: ", contains)
@@ -56,22 +91,23 @@ func addBase(ing_node):
 	elif isCooking:
 		return "rice/meat can only be added once"
 	else:
-		contains.append(ing_node.ing_name)
+		contains.append(ing_node)
 		start_cooking()
 		return "success"
 		
 func addSpice(ing_node):
 	if contains.size() == 0:
 		return "spice can only be added after rice/meat"
-	elif contains.has(ing_node.ing_name):
+	elif check_ing_already_exists(ing_node):
 		return "same ingredient can't be added twice"
 	else:
-		contains.append(ing_node.ing_name)
+		contains.append(ing_node)
 		return "success"
-	
 	
 func addIng(ing_node):
 	var status: String;
+	if ing_node.obj_type != "ing":
+		return "Cannot put food inside pot"
 	if check_if_base(ing_node):
 		status = addBase(ing_node)
 	else:
@@ -79,11 +115,11 @@ func addIng(ing_node):
 	update_ingredient_effects()
 	return status
 	
+	
+#### signal emitters
 func _on_area_2d_area_entered(area):
 	area_entered.emit(self)
 
-
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_pressed():
-		print("clicked")
 		selected.emit(self)

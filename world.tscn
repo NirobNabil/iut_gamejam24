@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=15 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cgkms73isshce" path="res://ingredients/spice.tres" id="4_j7ncp"]
 [ext_resource type="Resource" uid="uid://c0wfrh56s7y20" path="res://ingredients/rice.tres" id="5_nk6uk"]
 [ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://prefabs/bin.tscn" id="8_efiyb"]
+[ext_resource type="PackedScene" uid="uid://dc4tpqo3jmxc1" path="res://prefabs/table.tscn" id="9_gsfln"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i37kf"]
 vertices = PackedVector2Array(1138, 632, 11, 632, 11, 11, 1139, 11)
@@ -91,7 +92,23 @@ position = Vector2(323, 75)
 [node name="bin" parent="." instance=ExtResource("8_efiyb")]
 position = Vector2(704, 595)
 
-[node name="customer_table" type="StaticBody2D" parent="."]
+[node name="table" parent="." instance=ExtResource("9_gsfln")]
+position = Vector2(121, 234)
+
+[node name="Hud" type="Node2D" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="Hud"]
+offset_left = 37.0
+offset_top = 37.0
+offset_right = 89.0
+offset_bottom = 60.0
+text = "Score: "
+
+[node name="ScoreContainer" type="Label" parent="Hud"]
+offset_left = 88.0
+offset_top = 37.0
+offset_right = 140.0
+offset_bottom = 60.0
 
 [connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
 [connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
@@ -103,3 +120,6 @@ position = Vector2(704, 595)
 [connection signal="ing_selected" from="ingredient_table" to="." method="_on_ingredient_table_ing_selected"]
 [connection signal="entered_area" from="bin" to="." method="_on_bin_entered_area"]
 [connection signal="selected_bin" from="bin" to="." method="_on_bin_selected_bin"]
+[connection signal="area_entered" from="table" to="." method="_on_table_area_entered"]
+[connection signal="score_obtained" from="table" to="." method="_on_table_score_obtained"]
+[connection signal="selected" from="table" to="." method="_on_table_selected"]

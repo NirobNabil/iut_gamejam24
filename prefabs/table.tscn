@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc4tpqo3jmxc1"]
+
+[ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
+[ext_resource type="Texture2D" uid="uid://ccl7ng2lb1bo" path="res://textures/table.png" id="4_h5pt2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
+size = Vector2(146, 149)
+
+[node name="table" type="Node2D"]
+script = ExtResource("1_4dm1x")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.0603516, 0.0605059)
+texture = ExtResource("4_h5pt2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2voae")
+
+[node name="CustomerRequest" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
