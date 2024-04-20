@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsge5qtmtgeqp"]
+
+[ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://pot.tscn" id="1_c0c68"]
+[ext_resource type="Script" path="res://manager.gd" id="1_f4ycd"]
+[ext_resource type="PackedScene" uid="uid://cqbf2y6nhwg7c" path="res://player.tscn" id="1_xlphq"]
+[ext_resource type="Script" path="res://ingredient_table.gd" id="2_i2qm7"]
+[ext_resource type="Resource" uid="uid://cjyo80ax6drxa" path="res://ingredients/meat.tres" id="3_hxumr"]
+[ext_resource type="Resource" uid="uid://cgkms73isshce" path="res://ingredients/spice.tres" id="4_j7ncp"]
+[ext_resource type="Resource" uid="uid://c0wfrh56s7y20" path="res://ingredients/rice.tres" id="5_nk6uk"]
+[ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://bin.tscn" id="8_efiyb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i37kf"]
+vertices = PackedVector2Array(1138, 632, 11, 632, 11, 11, 1139, 11)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1150, 2, 1148, 642, 1148, 642, 2, 643, 2, 643, 1.03984, 26.5782, 1, 1, 1, 1)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3oct"]
+size = Vector2(103, 646)
+
+[sub_resource type="Gradient" id="Gradient_f2kyo"]
+offsets = PackedFloat32Array(0, 0.987013, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.331169, 0.331169, 0.331169, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cynkk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_203bm"]
+color_ramp = SubResource("Gradient_f2kyo")
+noise = SubResource("FastNoiseLite_cynkk")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_f4ycd")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_i37kf")
+
+[node name="cooking_table" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cooking_table"]
+visible = false
+position = Vector2(1100, 325)
+shape = SubResource("RectangleShape2D_x3oct")
+
+[node name="ColorRect" type="ColorRect" parent="cooking_table"]
+offset_left = 1057.0
+offset_top = 11.0
+offset_right = 1138.0
+offset_bottom = 634.0
+color = Color(0.81, 0.8019, 0.8019, 1)
+
+[node name="pot1" parent="cooking_table" instance=ExtResource("1_c0c68")]
+position = Vector2(1100, 208)
+pot_name = "1"
+
+[node name="pot2" parent="cooking_table" instance=ExtResource("1_c0c68")]
+position = Vector2(1099, 332)
+pot_name = "2"
+
+[node name="pot3" parent="cooking_table" instance=ExtResource("1_c0c68")]
+position = Vector2(1100, 456)
+pot_name = "3"
+
+[node name="ingredient_table" type="StaticBody2D" parent="." node_paths=PackedStringArray("ing_markers")]
+script = ExtResource("2_i2qm7")
+ing_markers = [NodePath("ing1_pos"), NodePath("ing2_pos"), NodePath("ing3_pos")]
+ing_resources = Array[Resource("res://ing_res.gd")]([ExtResource("3_hxumr"), ExtResource("4_j7ncp"), ExtResource("5_nk6uk")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ingredient_table"]
+visible = false
+position = Vector2(1100, 325)
+shape = SubResource("RectangleShape2D_x3oct")
+
+[node name="Sprite2D" type="Sprite2D" parent="ingredient_table"]
+position = Vector2(842.75, 45.75)
+scale = Vector2(0.805664, 0.165039)
+texture = SubResource("NoiseTexture2D_203bm")
+
+[node name="ing1_pos" type="Marker2D" parent="ingredient_table"]
+position = Vector2(712, 43)
+
+[node name="ing2_pos" type="Marker2D" parent="ingredient_table"]
+position = Vector2(842, 45)
+
+[node name="ing3_pos" type="Marker2D" parent="ingredient_table"]
+position = Vector2(961, 41)
+
+[node name="Player" parent="." instance=ExtResource("1_xlphq")]
+position = Vector2(323, 75)
+
+[node name="bin" parent="." instance=ExtResource("8_efiyb")]
+position = Vector2(704, 595)
+
+[connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
+[connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
+[connection signal="area_entered" from="cooking_table/pot2" to="." method="_on_pot_area_entered"]
+[connection signal="selected" from="cooking_table/pot2" to="." method="_on_pot_selected"]
+[connection signal="area_entered" from="cooking_table/pot3" to="." method="_on_pot_area_entered"]
+[connection signal="selected" from="cooking_table/pot3" to="." method="_on_pot_selected"]
+[connection signal="ing_area_entered" from="ingredient_table" to="." method="_on_ingredient_table_ing_area_entered"]
+[connection signal="ing_selected" from="ingredient_table" to="." method="_on_ingredient_table_ing_selected"]
+[connection signal="entered_area" from="bin" to="." method="_on_bin_entered_area"]
+[connection signal="selected_bin" from="bin" to="." method="_on_bin_selected_bin"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ing_res" load_steps=3 format=3 uid="uid://cjyo80ax6drxa"]
+
+[ext_resource type="Script" path="res://ing_res.gd" id="1_lnnu1"]
+[ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_t2bhc"]
+
+[resource]
+script = ExtResource("1_lnnu1")
+texture = ExtResource("2_t2bhc")
+ing_name = "meat"
