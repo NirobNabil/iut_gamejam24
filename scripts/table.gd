@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Table
+
 signal area_entered(table_node)
 signal selected(table_node)
 signal score_obtained(score)

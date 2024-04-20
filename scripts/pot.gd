@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Pot
+
 signal area_entered(pot_node)
 signal selected(pot_node)
 
@@ -9,12 +11,12 @@ var obj_type: String = "pot"
 @export var cooking_texture: Texture2D
 @export var idle_texture: Texture2D
 
-const cooking_time: float = 5.0
+const cooking_time: float = 1.0
 
-var contains: Array[Node2D]
+var contains: Array[Ing]
 var isCooking: bool = false
 var isCooked: bool = false
-var cookedFood: Node2D = null
+var cookedFood: Food = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,23 +45,18 @@ func start_cooking():
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
 
-func check_ing_already_exists(ing_node):
-	for ing in contains:
-		if ing.ing_name == ing_node.ing_name:
-			return true
-	return false
 
 func set_food_ready():
 	if cookedFood != null:
 		return
-	var food = load("res://prefabs/food.tscn").instantiate()
-	food.visible = false
-	food.hotness = 100
+	var food: Food = load("res://prefabs/food.tscn").instantiate()
+	food.set_hotness(100)
+	food.disable_area2d()
 	for ing in contains:
-		food.spice_level += ing.spice_level 
+		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
 	print(cookedFood)
-	#add_child(cookedFood)  ### adding child will cause area entered singgnal to be fired
+	add_child(cookedFood) 
 	$StatusLabel.text = "food ready"
 	#$sprite.texture = idle_texture
 
@@ -72,12 +69,20 @@ func stop_cooking():
 func pickup_food():
 	var food = cookedFood
 	cookedFood = null
+	remove_child(food)
 	$StatusLabel.text = ""
 	stop_cooking()
 	return food
 
 
 #### handle ingredient adding
+
+
+func check_ing_already_exists(ing_node):
+	for ing in contains:
+		if ing.ing_name == ing_node.ing_name:
+			return true
+	return false
 
 func update_ingredient_effects():
 	print("Ingredients in pot: ", contains)
@@ -106,8 +111,8 @@ func addSpice(ing_node):
 	
 func addIng(ing_node):
 	var status: String;
-	if ing_node.obj_type != "ing":
-		return "Cannot put food inside pot"
+	if not ing_node is Ing:
+		return "Can only put ingredients inside pot"
 	if check_if_base(ing_node):
 		status = addBase(ing_node)
 	else:

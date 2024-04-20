@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var movement_speed: float = 200
+@export var movement_speed: float = 600
 @export var navigation_agent: NavigationAgent2D
 
 var movement_target: Vector2
@@ -10,12 +10,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		movement_target = event.position
 		navigation_agent.set_target_position(movement_target) 
-		print("mouse event: ", movement_target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	navigation_agent.set_path_desired_distance(4.0)
-	navigation_agent.set_target_desired_distance(4.0)
+	navigation_agent.set_path_desired_distance(15.0)
+	navigation_agent.set_target_desired_distance(15.0)
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 	#call_deferred("actor_setup")	
@@ -66,6 +65,7 @@ var carrying: Node2D = null
 func carry_obj(obj):
 	if carrying == null:
 		carrying = obj
+		print(carrying)
 		return "success"
 	else:
 		return "Cannot carry more than one item"

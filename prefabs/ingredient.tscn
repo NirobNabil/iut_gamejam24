@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://caosggfdfbvk4"]
+[gd_scene load_steps=6 format=3 uid="uid://caosggfdfbvk4"]
 
 [ext_resource type="Script" path="res://scripts/ingredient.gd" id="1_j6p1v"]
 [ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_d1mqo"]
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_y7na8"]
+[ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="4_0a7la"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(62, 123)
@@ -22,6 +23,17 @@ position = Vector2(0, 31.5)
 shape = SubResource("RectangleShape2D_2voae")
 
 [node name="customer_table" type="StaticBody2D" parent="."]
+
+[node name="SpiceLevelIndicator" type="TextureProgressBar" parent="."]
+offset_left = -33.0
+offset_top = -40.0
+offset_right = 235.0
+scale = Vector2(0.239102, 0.599468)
+texture_under = ExtResource("4_0a7la")
+texture_over = ExtResource("4_0a7la")
+texture_progress = ExtResource("4_0a7la")
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1, 0.15, 0.15, 1)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

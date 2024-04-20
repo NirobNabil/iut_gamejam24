@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=18 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -7,8 +7,11 @@
 [ext_resource type="Resource" uid="uid://cjyo80ax6drxa" path="res://ingredients/meat.tres" id="3_hxumr"]
 [ext_resource type="Resource" uid="uid://cgkms73isshce" path="res://ingredients/spice.tres" id="4_j7ncp"]
 [ext_resource type="Resource" uid="uid://c0wfrh56s7y20" path="res://ingredients/rice.tres" id="5_nk6uk"]
+[ext_resource type="Resource" uid="uid://cwo1lx1707wmc" path="res://ingredients/bombay_morich.tres" id="7_gq7pb"]
+[ext_resource type="Resource" uid="uid://d3kyoeq30qumd" path="res://ingredients/capsicum.tres" id="8_71v2x"]
 [ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://prefabs/bin.tscn" id="8_efiyb"]
 [ext_resource type="PackedScene" uid="uid://dc4tpqo3jmxc1" path="res://prefabs/table.tscn" id="9_gsfln"]
+[ext_resource type="PackedScene" uid="uid://5whx3uiu5mx3" path="res://prefabs/fan.tscn" id="12_mu1qa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i37kf"]
 vertices = PackedVector2Array(1138, 632, 11, 632, 11, 11, 1139, 11)
@@ -17,7 +20,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(1150, 2, 1148, 642, 114
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3oct"]
-size = Vector2(103, 646)
+size = Vector2(657.5, 95)
 
 [sub_resource type="Gradient" id="Gradient_f2kyo"]
 offsets = PackedFloat32Array(0, 0.987013, 1)
@@ -64,27 +67,44 @@ pot_name = "3"
 
 [node name="ingredient_table" type="StaticBody2D" parent="." node_paths=PackedStringArray("ing_markers")]
 script = ExtResource("2_i2qm7")
-ing_markers = [NodePath("ing1_pos"), NodePath("ing2_pos"), NodePath("ing3_pos")]
-ing_resources = Array[Resource("res://scripts/ing_res.gd")]([ExtResource("3_hxumr"), ExtResource("4_j7ncp"), ExtResource("5_nk6uk")])
+ing_markers = [NodePath("pos_markers/0"), NodePath("pos_markers/1"), NodePath("pos_markers/2"), NodePath("pos_markers/3"), NodePath("pos_markers/4"), NodePath("pos_markers/5"), NodePath("pos_markers/6")]
+ing_resources = Array[Resource("res://scripts/ing_res.gd")]([ExtResource("3_hxumr"), ExtResource("5_nk6uk"), ExtResource("4_j7ncp"), ExtResource("7_gq7pb"), ExtResource("8_71v2x")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ingredient_table"]
-visible = false
-position = Vector2(1100, 325)
+position = Vector2(727.25, 52.5)
 shape = SubResource("RectangleShape2D_x3oct")
 
 [node name="Sprite2D" type="Sprite2D" parent="ingredient_table"]
-position = Vector2(842.75, 45.75)
-scale = Vector2(0.805664, 0.165039)
+position = Vector2(730, 53)
+scale = Vector2(1.25803, 0.165039)
 texture = SubResource("NoiseTexture2D_203bm")
 
-[node name="ing1_pos" type="Marker2D" parent="ingredient_table"]
-position = Vector2(712, 43)
+[node name="pos_markers" type="Node2D" parent="ingredient_table"]
 
-[node name="ing2_pos" type="Marker2D" parent="ingredient_table"]
-position = Vector2(842, 45)
+[node name="0" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(457, 52)
 
-[node name="ing3_pos" type="Marker2D" parent="ingredient_table"]
-position = Vector2(961, 41)
+[node name="1" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(544, 53)
+
+[node name="2" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(631, 52)
+
+[node name="3" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(718, 52)
+
+[node name="4" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(806, 51)
+
+[node name="5" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(885, 49)
+
+[node name="6" type="Marker2D" parent="ingredient_table/pos_markers"]
+position = Vector2(963, 49)
+
+[node name="IngredientsRegenerateTimer" type="Timer" parent="ingredient_table"]
+wait_time = 2.0
+autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_xlphq")]
 position = Vector2(323, 75)
@@ -110,6 +130,15 @@ offset_top = 37.0
 offset_right = 140.0
 offset_bottom = 60.0
 
+[node name="Fan" parent="." instance=ExtResource("12_mu1qa")]
+position = Vector2(782, 595)
+
+[node name="Fan2" parent="." instance=ExtResource("12_mu1qa")]
+position = Vector2(867, 597)
+
+[node name="Fan3" parent="." instance=ExtResource("12_mu1qa")]
+position = Vector2(950, 595)
+
 [connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
 [connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
 [connection signal="area_entered" from="cooking_table/pot2" to="." method="_on_pot_area_entered"]
@@ -118,8 +147,15 @@ offset_bottom = 60.0
 [connection signal="selected" from="cooking_table/pot3" to="." method="_on_pot_selected"]
 [connection signal="ing_area_entered" from="ingredient_table" to="." method="_on_ingredient_table_ing_area_entered"]
 [connection signal="ing_selected" from="ingredient_table" to="." method="_on_ingredient_table_ing_selected"]
+[connection signal="timeout" from="ingredient_table/IngredientsRegenerateTimer" to="ingredient_table" method="_on_ingredients_regenerate_timer_timeout"]
 [connection signal="entered_area" from="bin" to="." method="_on_bin_entered_area"]
 [connection signal="selected_bin" from="bin" to="." method="_on_bin_selected_bin"]
 [connection signal="area_entered" from="table" to="." method="_on_table_area_entered"]
 [connection signal="score_obtained" from="table" to="." method="_on_table_score_obtained"]
 [connection signal="selected" from="table" to="." method="_on_table_selected"]
+[connection signal="entered_area" from="Fan" to="." method="_on_fan_entered_area"]
+[connection signal="selected_fan" from="Fan" to="." method="_on_fan_selected_fan"]
+[connection signal="entered_area" from="Fan2" to="." method="_on_fan_entered_area"]
+[connection signal="selected_fan" from="Fan2" to="." method="_on_fan_selected_fan"]
+[connection signal="entered_area" from="Fan3" to="." method="_on_fan_entered_area"]
+[connection signal="selected_fan" from="Fan3" to="." method="_on_fan_selected_fan"]

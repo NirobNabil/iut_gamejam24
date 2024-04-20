@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b60s6w06des4c"]
+[gd_scene load_steps=5 format=3 uid="uid://bjrywt43rjvps"]
 
 [ext_resource type="Script" path="res://scripts/food.gd" id="1_4ntrd"]
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_2baii"]
@@ -20,11 +20,24 @@ texture = ExtResource("3_2baii")
 position = Vector2(0, 31.5)
 shape = SubResource("RectangleShape2D_2voae")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -42.0
-offset_top = -65.0
-offset_right = 226.0
-offset_bottom = -25.0
+[node name="HotnessBar" type="TextureProgressBar" parent="."]
+offset_left = -43.0
+offset_top = -81.0
+offset_right = 225.0
+offset_bottom = -41.0
+scale = Vector2(0.319999, 1)
+value = 50.0
+texture_under = ExtResource("4_s5uq2")
+texture_over = ExtResource("4_s5uq2")
+texture_progress = ExtResource("4_s5uq2")
+tint_over = Color(1, 0, 0, 0)
+tint_progress = Color(1, 0.00999999, 0.00999999, 1)
+
+[node name="SpiceLevelBar" type="TextureProgressBar" parent="."]
+offset_left = -43.0
+offset_top = -56.0
+offset_right = 225.0
+offset_bottom = -16.0
 scale = Vector2(0.319999, 1)
 value = 50.0
 texture_under = ExtResource("4_s5uq2")

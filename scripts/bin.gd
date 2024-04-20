@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Bin
+
 signal entered_area(bin_node)
 signal selected_bin(bin_node)
 

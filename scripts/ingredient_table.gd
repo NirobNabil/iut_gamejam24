@@ -15,10 +15,26 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	for i in range(ing_markers.size()):
-		create_ing(ing_markers[i], ing_resources[rng.randi_range(0, ing_resources.size()-1)])
+	create_ing( ing_markers[0], ing_resources[0] )
+	create_ing( ing_markers[1], ing_resources[1] )
+	
+	generate_ingredients()
 	
 	pass # Replace with function body.
+
+func generate_ingredients():
+	for i in range(2, ing_markers.size()):
+		create_ing( ing_markers[i], ing_resources[ rng.randi_range(2, ing_resources.size()-1) ] )
+		
+
+func regenerate_ingredients():
+	for node in get_children():
+		if node is Ing:
+			if node.ing_name == "rice" || node.ing_name == "meat":
+				continue
+			node.visible = false
+			node.queue_free()
+	generate_ingredients()
 
 func create_ing(marker: Marker2D, res: ing_res):
 	var ing_prefab = preload("res://prefabs/ingredient.tscn")
@@ -44,3 +60,8 @@ func _handle_ing_area_selected_signal(ing_node):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_ingredients_regenerate_timer_timeout():
+	print("Regenerate tiemout")
+	regenerate_ingredients()

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ing_res" load_steps=3 format=3 uid="uid://cwo1lx1707wmc"]
 
 [ext_resource type="Script" path="res://scripts/ing_res.gd" id="1_wcavn"]
-[ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="2_k23gv"]
+[ext_resource type="Texture2D" uid="uid://s27cwlu237du" path="res://textures/bombay_morich.jpeg" id="2_yhkqr"]
 
 [resource]
 script = ExtResource("1_wcavn")
-texture = ExtResource("2_k23gv")
-ing_name = "spice"
+texture = ExtResource("2_yhkqr")
+ing_name = "বম্বে মরিচ "
 spice_level = 60

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Ing
+
 signal entered_area(ing_node)
 signal selected_ing(ing_node)
 
@@ -19,7 +21,18 @@ func init(res: ing_res):
 	ing_name = res.ing_name
 	obj_name = ing_name ## bad naming fix later
 	spice_level = res.spice_level
+	$SpiceLevelIndicator.value = spice_level
 	get_node("sprite").texture = res.texture
+	
+
+func clone():
+	var clone = self.duplicate()
+	clone.ing_name = self.ing_name
+	clone.obj_name = self.obj_name
+	clone.texture = self.texture
+	clone.spice_level = self.spice_level
+	
+	return clone
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
