@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://bsge5qtmtgeqp"]
 
-[ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://pot.tscn" id="1_c0c68"]
-[ext_resource type="Script" path="res://manager.gd" id="1_f4ycd"]
-[ext_resource type="PackedScene" uid="uid://cqbf2y6nhwg7c" path="res://player.tscn" id="1_xlphq"]
-[ext_resource type="Script" path="res://ingredient_table.gd" id="2_i2qm7"]
+[ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
+[ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
+[ext_resource type="PackedScene" uid="uid://cqbf2y6nhwg7c" path="res://prefabs/player.tscn" id="1_xlphq"]
+[ext_resource type="Script" path="res://scripts/ingredient_table.gd" id="2_i2qm7"]
 [ext_resource type="Resource" uid="uid://cjyo80ax6drxa" path="res://ingredients/meat.tres" id="3_hxumr"]
 [ext_resource type="Resource" uid="uid://cgkms73isshce" path="res://ingredients/spice.tres" id="4_j7ncp"]
 [ext_resource type="Resource" uid="uid://c0wfrh56s7y20" path="res://ingredients/rice.tres" id="5_nk6uk"]
-[ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://bin.tscn" id="8_efiyb"]
+[ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://prefabs/bin.tscn" id="8_efiyb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i37kf"]
 vertices = PackedVector2Array(1138, 632, 11, 632, 11, 11, 1139, 11)
@@ -64,7 +64,7 @@ pot_name = "3"
 [node name="ingredient_table" type="StaticBody2D" parent="." node_paths=PackedStringArray("ing_markers")]
 script = ExtResource("2_i2qm7")
 ing_markers = [NodePath("ing1_pos"), NodePath("ing2_pos"), NodePath("ing3_pos")]
-ing_resources = Array[Resource("res://ing_res.gd")]([ExtResource("3_hxumr"), ExtResource("4_j7ncp"), ExtResource("5_nk6uk")])
+ing_resources = Array[Resource("res://scripts/ing_res.gd")]([ExtResource("3_hxumr"), ExtResource("4_j7ncp"), ExtResource("5_nk6uk")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ingredient_table"]
 visible = false
@@ -90,6 +90,8 @@ position = Vector2(323, 75)
 
 [node name="bin" parent="." instance=ExtResource("8_efiyb")]
 position = Vector2(704, 595)
+
+[node name="customer_table" type="StaticBody2D" parent="."]
 
 [connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
 [connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]

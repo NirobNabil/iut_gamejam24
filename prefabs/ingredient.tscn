@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://caosggfdfbvk4"]
 
-[ext_resource type="Script" path="res://ingredient.gd" id="1_mulif"]
-[ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_ga0gj"]
-[ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_lcxtm"]
+[ext_resource type="Script" path="res://scripts/ingredient.gd" id="1_3j0on"]
+[ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_d1mqo"]
+[ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_y7na8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(62, 123)
 
 [node name="ingredient" type="Node2D"]
-script = ExtResource("1_mulif")
-texture = ExtResource("2_ga0gj")
+script = ExtResource("1_3j0on")
+texture = ExtResource("2_d1mqo")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0738281, 0.071875)
-texture = ExtResource("3_lcxtm")
+texture = ExtResource("3_y7na8")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ing_res" load_steps=3 format=3 uid="uid://c0wfrh56s7y20"]
 
-[ext_resource type="Script" path="res://ing_res.gd" id="1_sf834"]
+[ext_resource type="Script" path="res://scripts/ing_res.gd" id="1_sf834"]
 [ext_resource type="Texture2D" uid="uid://tldws3rsjxph" path="res://textures/rice.jpg" id="2_onwda"]
 
 [resource]

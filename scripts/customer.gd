@@ -6,8 +6,14 @@ signal selected(pot_node)
 @export var pot_name: String
 var obj_type: String = "pot"
 
+@export var cooking_texture: Texture2D
+@export var idle_texture: Texture2D
+
+const cooking_time: float = 5.0
+
 var contains: Array[String]
 var isCooking: bool = false
+var isCooked: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,12 +22,27 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if isCooking:
+		$ProgressBar.visible = true
+		if $Timer.time_left == 0:
+			stop_cooking()
+			$ProgressBar.visible = false
+		else:
+			print($Timer.time_left)
+			$ProgressBar.value = ( cooking_time - $Timer.time_left)/cooking_time * 100
+	else:
+		$ProgressBar.visible = false
 	pass
 
 func start_cooking():
 	isCooking = true;
-	$sprite.texture = load("res://textures/cooking.jpeg")
-	pass
+	$Timer.start(cooking_time)
+	$sprite.texture = cooking_texture
+	
+func stop_cooking():
+	isCooking = true;
+	$sprite.texture = idle_texture
+	
 
 func update_ingredient_effects():
 	print("Ingredients in pot: ", contains)
