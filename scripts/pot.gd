@@ -17,9 +17,11 @@ var contains: Array[Ing]
 var isCooking: bool = false
 var isCooked: bool = false
 var cookedFood: Food = null
+var initial_scale: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	initial_scale = $sprite.scale
 	pass # Replace with function body.
 
 
@@ -39,14 +41,14 @@ func _process(delta):
 
 #### Handle cooking
 
-func start_cooking():
+func start_cooking(tex: Texture2D):
 	isCooking = true;
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
 
 func get_base_type():
 	for ing in contains:
-		if ing.ing_name == "rice" || ing.ing_name == "meat":
+		if ing.ing_name in Super.bases:
 			return ing.ing_name
 
 func set_food_ready():
@@ -59,7 +61,8 @@ func set_food_ready():
 		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
 	print(cookedFood)
-	add_child(cookedFood) 
+	add_child(cookedFood)
+	cookedFood.get_node("sprite").texture = $sprite.texture
 	$StatusLabel.text = "food ready"
 	#$sprite.texture = idle_texture
 
@@ -67,7 +70,7 @@ func stop_cooking():
 	contains = []
 	isCooking = false
 	$sprite.texture = idle_texture
-	
+	$sprite.scale = initial_scale
 	
 func pickup_food():
 	var food = cookedFood
@@ -91,7 +94,7 @@ func update_ingredient_effects():
 	print("Ingredients in pot: ", contains)
 
 func check_if_base(ing_node):
-	return ing_node.ing_name == "rice" || ing_node.ing_name == "meat"
+	return ing_node.ing_name in Super.bases
 
 func addBase(ing_node):
 	if contains.size() != 0:
@@ -100,7 +103,7 @@ func addBase(ing_node):
 		return "rice/meat can only be added once"
 	else:
 		contains.append(ing_node)
-		start_cooking()
+		start_cooking(ing_node.get_node("sprite").texture)
 		return "success"
 		
 func addSpice(ing_node):

@@ -14,3 +14,11 @@ config/name="iut_gamejam24"
 run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Super="*res://scripts/super.gd"
+
+[display]
+
+window/stretch/mode="viewport"

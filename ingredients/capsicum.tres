@@ -7,4 +7,4 @@
 script = ExtResource("1_qlp8h")
 texture = ExtResource("2_5hlbt")
 ing_name = "capsium"
-spice_level = 30
+spice_level = 25

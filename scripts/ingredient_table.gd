@@ -10,27 +10,29 @@ var ing1: Node
 var ing2: Node
 var ing3: Node
 
+var start_from: int = 4
+
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	create_ing( ing_markers[0], ing_resources[0] )
-	create_ing( ing_markers[1], ing_resources[1] )
+	for i in range(start_from):
+		create_ing( ing_markers[i], ing_resources[i] )
 	
 	generate_ingredients()
 	
 	pass # Replace with function body.
 
 func generate_ingredients():
-	for i in range(2, ing_markers.size()):
-		create_ing( ing_markers[i], ing_resources[ rng.randi_range(2, ing_resources.size()-1) ] )
+	for i in range(start_from, ing_markers.size()):
+		create_ing( ing_markers[i], ing_resources[ rng.randi_range(start_from, ing_resources.size()-1) ] )
 		
 
 func regenerate_ingredients():
 	for node in get_children():
 		if node is Ing:
-			if node.ing_name == "rice" || node.ing_name == "meat":
+			if node.ing_name in Super.bases:
 				continue
 			node.visible = false
 			node.queue_free()

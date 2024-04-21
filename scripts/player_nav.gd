@@ -52,6 +52,11 @@ func _physics_process(delta):
 		navigation_agent.set_velocity(new_velocity)
 	else:
 		_on_velocity_computed(new_velocity)
+	if next_path_position.x - position.x > 0:
+		# going right
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 	
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity

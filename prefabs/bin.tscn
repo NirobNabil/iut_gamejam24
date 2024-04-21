@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bidorsyujnfjp"]
 
 [ext_resource type="Script" path="res://scripts/bin.gd" id="1_jac5o"]
-[ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_5qks6"]
+[ext_resource type="Texture2D" uid="uid://dgqqupkypj65p" path="res://textures/dustbin.png" id="2_j1tl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(74, 112.5)
@@ -11,8 +11,8 @@ script = ExtResource("1_jac5o")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(6.6875, 8)
-scale = Vector2(0.0947265, 0.096875)
-texture = ExtResource("3_5qks6")
+scale = Vector2(0.237216, 0.242596)
+texture = ExtResource("2_j1tl7")
 
 [node name="Area2D" type="Area2D" parent="."]
 

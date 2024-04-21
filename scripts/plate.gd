@@ -7,6 +7,8 @@ signal selected_plate(plate_node)
 
 @export var rice_texture: Texture2D
 @export var meat_texture: Texture2D
+@export var mutton_texture: Texture2D
+@export var chicken_texture: Texture2D
 @export var rice_meat_texture: Texture2D
 @export var empty_texture: Texture2D
 
@@ -54,6 +56,12 @@ func update_sprite():
 			$sprite.texture = rice_texture
 		elif contains[0].base_type == "meat":
 			$sprite.texture = meat_texture
+		elif contains[0].base_type == "mutton":
+			$sprite.texture = meat_texture
+		elif contains[0].base_type == "beef":
+			$sprite.texture = meat_texture
+		elif contains[0].base_type == "chicken":
+			$sprite.texture = chicken_texture
 	elif contains.size() == 2:
 		$sprite.texture = rice_meat_texture
 
@@ -83,7 +91,7 @@ func pickup_food():
 	if readyFood != null:
 		var food:Food = readyFood
 		readyFood = null
-		update_sprite()
+		#update_sprite()
 		remove_child(food)
 		return food
 	return null

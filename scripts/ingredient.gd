@@ -7,10 +7,12 @@ signal selected_ing(ing_node)
 
 @export var texture: Texture2D
 @export var ing_name: String
+@export var tex_size: float = 140.0
 
 var obj_name = ing_name
 var obj_type: String = "ing"
 var spice_level: int = 0
+var factor: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +25,14 @@ func init(res: ing_res):
 	spice_level = res.spice_level
 	$SpiceLevelIndicator.value = spice_level
 	get_node("sprite").texture = res.texture
+	if ing_name in ["mutton", "beef"]:
+		factor = tex_size / ($sprite.get_texture().get_width() * $sprite.scale.x)
+		$sprite.scale *= factor
+	else:
+		factor = 72.0 / ($sprite.get_texture().get_width() * $sprite.scale.x)
+		$sprite.scale *= factor
 	
+	$Label.text = ing_name
 
 func clone():
 	var clone = self.duplicate()

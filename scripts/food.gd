@@ -4,6 +4,7 @@ class_name Food
 
 var spice_level: float = 0
 var hotness: float = 0
+var meat_type: String = ""
 
 var obj_name = "cooked food"
 var obj_type = "food"

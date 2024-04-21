@@ -20,8 +20,10 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2voae")
 
 [node name="CustomerRequest" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -16.0
+offset_top = -110.0
+offset_right = 24.0
+offset_bottom = -87.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

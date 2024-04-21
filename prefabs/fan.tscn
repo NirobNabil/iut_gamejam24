@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5whx3uiu5mx3"]
 
 [ext_resource type="Script" path="res://scripts/fan.gd" id="1_2e7nc"]
-[ext_resource type="Texture2D" uid="uid://cp2e24kyh8ouh" path="res://textures/fan.jpg" id="2_gt48s"]
+[ext_resource type="Texture2D" uid="uid://cpi0i7er5rhd" path="res://textures/fan_sprite.png" id="2_po7eb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(62, 123)
@@ -11,7 +11,7 @@ script = ExtResource("1_2e7nc")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0738281, 0.071875)
-texture = ExtResource("2_gt48s")
+texture = ExtResource("2_po7eb")
 
 [node name="Area2D" type="Area2D" parent="."]
 
