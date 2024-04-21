@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ing_res" load_steps=3 format=3 uid="uid://4umqhfsyfeeh"]
+
+[ext_resource type="Script" path="res://scripts/ing_res.gd" id="1_7enpo"]
+[ext_resource type="Texture2D" uid="uid://bmiqy6ktd8mnb" path="res://textures/peas.png" id="2_knq5v"]
+
+[resource]
+script = ExtResource("1_7enpo")
+texture = ExtResource("2_knq5v")
+ing_name = "peas"
+spice_level = 30
