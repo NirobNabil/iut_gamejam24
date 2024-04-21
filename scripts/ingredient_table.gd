@@ -63,5 +63,4 @@ func _process(delta):
 
 
 func _on_ingredients_regenerate_timer_timeout():
-	print("Regenerate tiemout")
 	regenerate_ingredients()

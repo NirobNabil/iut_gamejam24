@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://btxk2ojujd1xw"]
+
+[ext_resource type="Script" path="res://scripts/plate.gd" id="1_fqj87"]
+[ext_resource type="Texture2D" uid="uid://bavcwei3d0eeo" path="res://textures/plate.jpg" id="2_0o2pg"]
+[ext_resource type="Texture2D" uid="uid://b3w7avvxu0vxs" path="res://textures/plate_empty.jpg" id="3_gp6cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
+size = Vector2(118, 127)
+
+[node name="Plate" type="Node2D"]
+scale = Vector2(0.823222, 0.88)
+script = ExtResource("1_fqj87")
+rice_texture = ExtResource("2_0o2pg")
+meat_texture = ExtResource("2_0o2pg")
+rice_meat_texture = ExtResource("2_0o2pg")
+empty_texture = ExtResource("3_gp6cw")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.0738281, 0.071875)
+texture = ExtResource("3_gp6cw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 20.5)
+shape = SubResource("RectangleShape2D_2voae")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

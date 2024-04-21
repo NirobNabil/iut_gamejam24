@@ -4,11 +4,13 @@
 [ext_resource type="Script" path="res://scripts/player_nav.gd" id="1_snwn1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3jhsq"]
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppo3n"]
 size = Vector2(61, 62)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent")]
+scale = Vector2(0.72, 0.68)
 script = ExtResource("1_snwn1")
 navigation_agent = NodePath("NavigationAgent2D")
 

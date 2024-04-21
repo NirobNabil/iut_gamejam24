@@ -8,6 +8,7 @@ var movement_target: Vector2
 
 func _input(event):
 	if event is InputEventMouseButton:
+		$instruction_label.text = ""
 		movement_target = event.position
 		navigation_agent.set_target_position(movement_target) 
 

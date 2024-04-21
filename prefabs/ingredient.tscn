@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="4_0a7la"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
-size = Vector2(62, 123)
+size = Vector2(130, 38)
 
 [node name="ingredient" type="Node2D"]
+scale = Vector2(0.48, 0.52)
 script = ExtResource("1_j6p1v")
 texture = ExtResource("2_d1mqo")
 
@@ -17,18 +18,20 @@ scale = Vector2(0.0738281, 0.071875)
 texture = ExtResource("3_y7na8")
 
 [node name="Area2D" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 31.5)
+position = Vector2(-34, 1)
 shape = SubResource("RectangleShape2D_2voae")
 
 [node name="customer_table" type="StaticBody2D" parent="."]
 
 [node name="SpiceLevelIndicator" type="TextureProgressBar" parent="."]
-offset_left = -33.0
-offset_top = -40.0
-offset_right = 235.0
-scale = Vector2(0.239102, 0.599468)
+offset_left = -20.8333
+offset_top = -40.3846
+offset_right = 247.167
+offset_bottom = -0.384609
+scale = Vector2(0.155769, 0.599468)
 texture_under = ExtResource("4_0a7la")
 texture_over = ExtResource("4_0a7la")
 texture_progress = ExtResource("4_0a7la")

@@ -19,6 +19,7 @@ func _process(delta):
 		target_reached = false
 
 func handle_target_reached():
+	print("reached ", target)
 	if target is Ing:
 		handle_ing_action(target)
 	elif target is Pot:
@@ -29,7 +30,24 @@ func handle_target_reached():
 		handle_table_action(target)
 	elif target is Fan:
 		handle_fan_action(target)
+	elif target is Plate:
+		handle_plate_action(target)
+	target = null
 
+func handle_plate_action(plate: Plate):
+	if $Player.carrying != null:
+		if not $Player.carrying is Food:
+			return "Only cooked food can be placecd"
+		var status = plate.put_food($Player.carrying)
+		if status == "success":
+			$Player.drop_obj()
+		else :
+			$Player.set_info(status)
+	else:
+		if plate.readyFood != null:
+			$Player.carry_obj( plate.pickup_food() )
+		else:
+			$Player.set_info("Biryani combination not ready")
 
 func handle_pot_action(pot: Pot):
 	if $Player.carrying != null:
@@ -96,8 +114,13 @@ func handle_bin_action(bin: Bin):
 		
 
 func set_target(node: Node2D):
-	target_reached = false
 	target = node
+	if( node.get_node("Area2D").overlaps_area($Player/Area2D)  ):
+		## this checks if the player is already inside the target
+		target_reached = true
+		handle_target_reached()
+	else:
+		target_reached = false
 	
 func check_and_set_reached(node: Node2D):
 	if node == target:
@@ -122,6 +145,8 @@ func _on_table_area_entered(table_node):
 func _on_fan_entered_area(fan_node):
 	check_and_set_reached(fan_node)
 
+func _on_plate_entered_area(plate_node):
+	check_and_set_reached(plate_node)
 
 
 func _on_ingredient_table_ing_selected(ing_node):
@@ -139,8 +164,15 @@ func _on_table_selected(table_node):
 func _on_fan_selected_fan(fan_node):
 	set_target(fan_node)
 
+func _on_plate_selected_plate(plate_node):
+	set_target(plate_node)
+
 
 
 func _on_table_score_obtained(score):
 	$Hud/ScoreContainer.text = str( int($Hud/ScoreContainer.text) + int(score) )
+
+
+
+
 

@@ -4,19 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_5qks6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
-size = Vector2(62, 123)
+size = Vector2(74, 112.5)
 
 [node name="bin" type="Node2D"]
 script = ExtResource("1_jac5o")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.0738281, 0.071875)
+position = Vector2(6.6875, 8)
+scale = Vector2(0.0947265, 0.096875)
 texture = ExtResource("3_5qks6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -30)
+position = Vector2(7, 25.75)
 shape = SubResource("RectangleShape2D_2voae")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

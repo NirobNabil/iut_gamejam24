@@ -11,7 +11,7 @@ var obj_type: String = "pot"
 @export var cooking_texture: Texture2D
 @export var idle_texture: Texture2D
 
-const cooking_time: float = 1.0
+const cooking_time: float = 15.0
 
 var contains: Array[Ing]
 var isCooking: bool = false
@@ -31,7 +31,6 @@ func _process(delta):
 			set_food_ready()
 			$ProgressBar.visible = false
 		else:
-			print($Timer.time_left)
 			$ProgressBar.value = ( cooking_time - $Timer.time_left)/cooking_time * 100
 	else:
 		$ProgressBar.visible = false
@@ -45,13 +44,17 @@ func start_cooking():
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
 
+func get_base_type():
+	for ing in contains:
+		if ing.ing_name == "rice" || ing.ing_name == "meat":
+			return ing.ing_name
 
 func set_food_ready():
 	if cookedFood != null:
 		return
 	var food: Food = load("res://prefabs/food.tscn").instantiate()
-	food.set_hotness(100)
-	food.disable_area2d()
+	food.init( get_base_type(), 100, 0 )
+	print("Food base ", food.base_type)
 	for ing in contains:
 		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
@@ -110,6 +113,8 @@ func addSpice(ing_node):
 		return "success"
 	
 func addIng(ing_node):
+	if cookedFood != null:
+		return "Cannot add ingredient to cooked food"
 	var status: String;
 	if not ing_node is Ing:
 		return "Can only put ingredients inside pot"
