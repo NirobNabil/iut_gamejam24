@@ -1,14 +1,19 @@
 extends Node2D
 
+signal typed_spell_sig(typed_spell: String)
 
 var target: Node2D
 var target_reached: bool
 
+var spell_states = {}
+var typed_spell = ""
+var misspell_count: int
+
+var spell_collection = ["WAS", "QWE", "QTRW", "GONE"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,6 +22,32 @@ func _process(delta):
 	if target_reached:
 		handle_target_reached()
 		target_reached = false
+		
+	#for pot in spell_states.keys():
+		#print(spell_states[pot]["spell"])
+
+# spell handling mechanisms
+
+func _input(event):
+	if not event is InputEventKey:
+		return
+		
+	if event.pressed:
+		misspell_count = 0
+		typed_spell += char(event.keycode)
+		typed_spell_sig.emit(typed_spell)
+	
+
+
+var rng = RandomNumberGenerator.new()
+func set_spell_state(pot, state):
+	var spell = spell_collection[rng.randi_range(0, spell_collection.size())]
+	print(spell)
+	spell_states[pot] = {
+		"state": state,
+		"spell": spell
+	}
+
 
 func handle_target_reached():
 	print("reached ", target)
@@ -173,6 +204,15 @@ func _on_table_score_obtained(score):
 	$Hud/ScoreContainer.text = str( int($Hud/ScoreContainer.text) + int(score) )
 
 
+func _on_pot_spell_activated():
+	typed_spell = ""
 
 
+func misspell_penalty():
+	print("activated penalty")
 
+func _on_pot_misspelled():
+	misspell_count += 1
+	if misspell_count == 4:
+		typed_spell = ""
+		misspell_penalty()
