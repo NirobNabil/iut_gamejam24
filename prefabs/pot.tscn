@@ -1,40 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddiha2u3vtvio"]
+[gd_scene load_steps=7 format=3 uid="uid://ddiha2u3vtvio"]
 
 [ext_resource type="Script" path="res://scripts/pot.gd" id="1_ral8f"]
 [ext_resource type="Texture2D" uid="uid://be6c1d41fdxsi" path="res://textures/stove_idle.png" id="3_1hgip"]
+[ext_resource type="Texture2D" uid="uid://dkfupqeaxhi74" path="res://textures/Pot_empty_3.png" id="4_kf4n2"]
 [ext_resource type="Texture2D" uid="uid://btcrjypjmr6ip" path="res://textures/stove.png" id="4_qpetx"]
+[ext_resource type="PackedScene" uid="uid://caqkbcapp01gr" path="res://prefabs/smoke.tscn" id="5_4w46n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(123, 122)
-
-[sub_resource type="Gradient" id="Gradient_umaf8"]
-colors = PackedColorArray(1, 1, 1, 0.576471, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_drxom"]
-gradient = SubResource("Gradient_umaf8")
-
-[sub_resource type="Curve" id="Curve_mpu3v"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.575472, 0.853226), -0.816799, -0.816799, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_qgli3"]
-curve = SubResource("Curve_mpu3v")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5a3ei"]
-particle_flag_disable_z = true
-angle_min = -425.9
-angle_max = -170.6
-spread = 106.182
-angular_velocity_min = -14.2
-angular_velocity_max = 14.18
-gravity = Vector3(0, -98, 0)
-scale_min = 9.86
-scale_max = 24.63
-scale_curve = SubResource("CurveTexture_qgli3")
-color_ramp = SubResource("GradientTexture1D_drxom")
-turbulence_enabled = true
-turbulence_noise_strength = 3.76
-turbulence_noise_speed_random = 0.18
 
 [node name="pot" type="Node2D"]
 script = ExtResource("1_ral8f")
@@ -42,10 +15,11 @@ cooking_texture = ExtResource("4_qpetx")
 idle_texture = ExtResource("3_1hgip")
 
 [node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.917647, 0.917647, 0.917647, 1)
 z_index = 10
 z_as_relative = false
-scale = Vector2(0.581191, 0.582677)
-texture = ExtResource("3_1hgip")
+scale = Vector2(0.0605827, 0.0607375)
+texture = ExtResource("4_kf4n2")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -32.0
@@ -72,30 +46,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2voae")
 
-[node name="Smoke" type="Node2D" parent="."]
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Smoke"]
-z_index = 11
-position = Vector2(-30, -42)
-emitting = false
-amount = 3
-amount_ratio = 0.5295
-process_material = SubResource("ParticleProcessMaterial_5a3ei")
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Smoke"]
-z_index = 11
-position = Vector2(31, -31)
-emitting = false
-amount = 3
-amount_ratio = 0.637
-process_material = SubResource("ParticleProcessMaterial_5a3ei")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Smoke"]
-z_index = 11
-position = Vector2(3, -52)
-emitting = false
-amount = 3
-process_material = SubResource("ParticleProcessMaterial_5a3ei")
+[node name="Smoke" parent="." instance=ExtResource("5_4w46n")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

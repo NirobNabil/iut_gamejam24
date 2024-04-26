@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://caqkbcapp01gr"]
+
+[sub_resource type="Gradient" id="Gradient_umaf8"]
+colors = PackedColorArray(1, 1, 1, 0.576471, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_drxom"]
+gradient = SubResource("Gradient_umaf8")
+
+[sub_resource type="Curve" id="Curve_mpu3v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.575472, 0.853226), -0.816799, -0.816799, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qgli3"]
+curve = SubResource("Curve_mpu3v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5a3ei"]
+particle_flag_disable_z = true
+angle_min = -425.9
+angle_max = -170.6
+spread = 106.182
+angular_velocity_min = -14.2
+angular_velocity_max = 14.18
+gravity = Vector3(0, -98, 0)
+scale_min = 4.93
+scale_max = 14.0
+scale_curve = SubResource("CurveTexture_qgli3")
+color_ramp = SubResource("GradientTexture1D_drxom")
+turbulence_enabled = true
+turbulence_noise_strength = 3.76
+turbulence_noise_speed_random = 0.18
+
+[node name="Smoke" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(-30, -42)
+amount = 4
+amount_ratio = 0.5295
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(-22, -33)
+amount = 4
+amount_ratio = 0.5295
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(31, -31)
+amount = 4
+amount_ratio = 0.637
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(14, -23)
+amount = 4
+amount_ratio = 0.637
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(3, -52)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+z_index = 11
+position = Vector2(-2, -36)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5a3ei")
