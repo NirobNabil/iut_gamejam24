@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://clkdu3i2jp260"]
+
+[ext_resource type="Script" path="res://prefabs/ingMarker.gd" id="1_sik84"]
+
+[node name="IngMarker" type="Marker2D"]
+script = ExtResource("1_sik84")
+
+[node name="BlockedTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="BlockedTimer" to="." method="_on_blocked_timer_timeout"]

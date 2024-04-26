@@ -9,6 +9,8 @@ signal selected_ing(ing_node)
 @export var ing_name: String
 @export var tex_size: float = 140.0
 
+var blocked_time: int = 20
+var blocked: bool = false
 var obj_name = ing_name
 var obj_type: String = "ing"
 var spice_level: int = 0
@@ -43,12 +45,27 @@ func clone():
 	
 	return clone
 	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func put(item):
 	return true
+	
+func carry():
+	if blocked:
+		return ["Ingredient is blocked"]
+	return ["success", clone()]
+
+func block():
+	blocked = true
+	$blocked_sprite.visible = true
+	
+func unblock():
+	blocked = false
+	$blocked_sprite.visible = false
+
 
 func _on_area_2d_area_entered(area):
 	entered_area.emit(self)
@@ -56,4 +73,3 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_pressed():
 		selected_ing.emit(self)
-

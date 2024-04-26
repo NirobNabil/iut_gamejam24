@@ -38,7 +38,7 @@ func combine_food():
 		
 	#### spice level is avg of total
 	new_spice_level = new_spice_level / contains.size()
-	food.init( new_base_type, new_hotness, new_spice_level )
+	food.init( new_base_type, new_hotness, new_spice_level, true )
 	food.disable_food_sprite()
 	add_child(food)
 	readyFood = food
@@ -68,7 +68,10 @@ func update_sprite():
 func put_food(item: Food):
 	if not item is Food:
 		return "Can only place cooked foods"
-		
+	
+	if contains.size() != 0 and item.combined:
+		return "cannot add cooked food"
+	
 	if readyFood == null:
 		for food in contains:
 			print("contains food ", food.base_type)
@@ -77,7 +80,7 @@ func put_food(item: Food):
 		print("putting item  ", item)
 		contains.append(item)
 		update_sprite()
-		print("Plate ", contains.size())
+		#print("Plate ", contains.size())
 		#item.enable_everything()
 		item.visible = false
 		add_child(item)

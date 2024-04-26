@@ -8,6 +8,7 @@ var meat_type: String = ""
 
 var obj_name = "cooked food"
 var obj_type = "food"
+var combined = false
 
 var base_type = null
 
@@ -15,9 +16,10 @@ var base_type = null
 func _ready():
 	pass # Replace with function body.
 
-func init( new_base_type: String, hotness: float, spice_level: float ):
+func init( new_base_type: String, hotness: float, spice_level: float, _combined: bool = false ):
+	combined = _combined
 	base_type = new_base_type
-	obj_name = "Cooked " + new_base_type
+	obj_name = "cooked_" + new_base_type
 	set_hotness(hotness)
 	set_spice_level(spice_level)
 	disable_area2d()

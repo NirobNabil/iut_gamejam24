@@ -1,6 +1,10 @@
 extends Node2D
 
 signal typed_spell_sig(typed_spell: String)
+signal penalty_activated()
+
+var score: int = 0
+var reputation: int = 10
 
 var target: Node2D
 var target_reached: bool
@@ -22,6 +26,9 @@ func _process(delta):
 	if target_reached:
 		handle_target_reached()
 		target_reached = false
+		
+	if reputation <= 0:
+		print("game over")
 		
 	#for pot in spell_states.keys():
 		#print(spell_states[pot]["spell"])
@@ -97,14 +104,21 @@ func handle_pot_action(pot: Pot):
 ## this func is a mess
 func handle_table_action(table: Table):
 	var obj = $Player.carrying
+	if obj == null:
+		$Player.set_info("Not carrying any food")
+		return
+	
 	if obj != null and obj.obj_type != "food":
 		$Player.set_info("Only cooked food can be served")
 		return
-	var status: String = $Player.drop_obj()
+	var status: String  = table.put_food(obj)
 	if status != "success":
 		$Player.set_info(status)
 		return
-	status = table.put_food(obj)
+	status = $Player.drop_obj()
+	if status != "success":
+		$Player.set_info(status)
+		return
 
 func handle_fan_action(fan: Fan):
 	print("came fan action")
@@ -134,7 +148,11 @@ func handle_fan_action(fan: Fan):
 	
 
 func handle_ing_action(ing: Ing):
-	var status: String = $Player.carry_obj(ing.clone())
+	var ret_arr: Array = ing.carry()
+	var status = ret_arr[0]
+	if status == "success":
+		$Player.carry_obj( ret_arr[1] )
+	#var status: String = ing.clone())
 	if status != "success":
 		$Player.set_info(status)
 
@@ -200,8 +218,10 @@ func _on_plate_selected_plate(plate_node):
 
 
 
-func _on_table_score_obtained(score):
-	$Hud/ScoreContainer.text = str( int($Hud/ScoreContainer.text) + int(score) )
+func _on_table_score_obtained(_score):
+	print("score called")
+	score += _score
+	$Hud/ScoreContainer.text = str( int(score) )
 
 
 func _on_pot_spell_activated():
@@ -209,10 +229,17 @@ func _on_pot_spell_activated():
 
 
 func misspell_penalty():
+	penalty_activated.emit()
+	#health -= 1
 	print("activated penalty")
 
 func _on_pot_misspelled():
 	misspell_count += 1
 	if misspell_count == 4:
+		if typed_spell.length() > 1:
+			misspell_penalty()
 		typed_spell = ""
-		misspell_penalty()
+
+func _on_table_reputation_loss():
+	print("called on repitaton loss ", reputation)
+	reputation -= 1
