@@ -34,6 +34,7 @@ turbulence_noise_speed_random = 0.18
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(-30, -42)
+emitting = false
 amount = 4
 amount_ratio = 0.5295
 process_material = SubResource("ParticleProcessMaterial_5a3ei")
@@ -41,6 +42,7 @@ process_material = SubResource("ParticleProcessMaterial_5a3ei")
 [node name="GPUParticles2D6" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(-22, -33)
+emitting = false
 amount = 4
 amount_ratio = 0.5295
 process_material = SubResource("ParticleProcessMaterial_5a3ei")
@@ -48,6 +50,7 @@ process_material = SubResource("ParticleProcessMaterial_5a3ei")
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(31, -31)
+emitting = false
 amount = 4
 amount_ratio = 0.637
 process_material = SubResource("ParticleProcessMaterial_5a3ei")
@@ -55,6 +58,7 @@ process_material = SubResource("ParticleProcessMaterial_5a3ei")
 [node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(14, -23)
+emitting = false
 amount = 4
 amount_ratio = 0.637
 process_material = SubResource("ParticleProcessMaterial_5a3ei")
@@ -62,11 +66,13 @@ process_material = SubResource("ParticleProcessMaterial_5a3ei")
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(3, -52)
+emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_5a3ei")
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
 z_index = 11
 position = Vector2(-2, -36)
+emitting = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_5a3ei")

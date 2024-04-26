@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ing_res" load_steps=3 format=3 uid="uid://cdajq3bk6exdn"]
 
 [ext_resource type="Script" path="res://scripts/ing_res.gd" id="1_qnjhu"]
-[ext_resource type="Texture2D" uid="uid://w5gvo5bql665" path="res://textures/chichken.png" id="2_ww14i"]
+[ext_resource type="Texture2D" uid="uid://b4yf2cetveagr" path="res://textures/chicken_raw.png" id="2_ywcl5"]
 
 [resource]
 script = ExtResource("1_qnjhu")
-texture = ExtResource("2_ww14i")
+texture = ExtResource("2_ywcl5")
 ing_name = "chicken"
 spice_level = 0
