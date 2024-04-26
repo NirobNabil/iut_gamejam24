@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/plate.gd" id="1_fqj87"]
 [ext_resource type="Texture2D" uid="uid://bwxg7ntjktlys" path="res://textures/Ricebowl.png" id="2_1nnao"]
-[ext_resource type="Texture2D" uid="uid://b3w7avvxu0vxs" path="res://textures/plate_empty.jpg" id="3_gp6cw"]
 [ext_resource type="Texture2D" uid="uid://76se7w78imjc" path="res://textures/pokecamp_curry_l_24.png" id="3_sgut1"]
 [ext_resource type="Texture2D" uid="uid://w5gvo5bql665" path="res://textures/chichken.png" id="4_430on"]
 [ext_resource type="Texture2D" uid="uid://bsmjxi34nqyap" path="res://textures/pokecamp_curry_m_19.png" id="4_l0gq5"]
+[ext_resource type="Texture2D" uid="uid://dy0iwgifv31eh" path="res://textures/01_dish.png" id="7_k51ia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(118, 127)
@@ -17,16 +17,18 @@ rice_texture = ExtResource("2_1nnao")
 meat_texture = ExtResource("3_sgut1")
 chicken_texture = ExtResource("4_430on")
 rice_meat_texture = ExtResource("4_l0gq5")
-empty_texture = ExtResource("3_gp6cw")
+empty_texture = ExtResource("7_k51ia")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.0738281, 0.071875)
-texture = ExtResource("3_gp6cw")
+position = Vector2(-9.53674e-07, 1.13636)
+scale = Vector2(3.99818, 3.89241)
+texture = ExtResource("7_k51ia")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 20.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2voae")
 
 [node name="Timer" type="Timer" parent="."]

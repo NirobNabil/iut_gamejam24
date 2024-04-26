@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=23 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="9_vin4u"]
 [ext_resource type="PackedScene" uid="uid://5whx3uiu5mx3" path="res://prefabs/fan.tscn" id="12_mu1qa"]
 [ext_resource type="PackedScene" uid="uid://b33mmb8y6tx57" path="res://prefabs/plate.tscn" id="13_m5j6u"]
+[ext_resource type="Texture2D" uid="uid://d3tkvepflhwnf" path="res://textures/plate_holder2.png" id="15_xe2bq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8i0fv"]
 vertices = PackedVector2Array(405, 117, 457, 187, 441, 301, 405, 301, 296, 293, 288, 181, 19, 66, 392, 68, 291, 78, 191, 92, 453, 362, 907, 72, 907, 577, 752, 630, 750, 620, 720, 449, 720, 195, 843, 105, 20, 631, 188, 181, 941, 625, 988, 619, 988, 630, 295, 394, 403, 394, 453, 393, 452, 450, 942, 577, 670, 620, 671, 564, 459, 555, 843, 71, 185, 294, 185, 391, 445, 631)
@@ -116,6 +117,11 @@ position = Vector2(703, 606)
 
 [node name="PlateContainer" type="StaticBody2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="PlateContainer"]
+position = Vector2(569, 97)
+scale = Vector2(2.06, 1.82813)
+texture = ExtResource("15_xe2bq")
+
 [node name="Plate1" parent="PlateContainer" instance=ExtResource("13_m5j6u")]
 position = Vector2(456, 64)
 
@@ -163,7 +169,6 @@ color = Color(0.784314, 0.603922, 0.427451, 1)
 position = Vector2(79, 20)
 
 [node name="ColorRect" type="ColorRect" parent="cooking_table"]
-visible = false
 offset_left = 384.0
 offset_top = 189.0
 offset_right = 627.0
