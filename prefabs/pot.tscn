@@ -12,12 +12,6 @@ script = ExtResource("1_ral8f")
 cooking_texture = ExtResource("4_qpetx")
 idle_texture = ExtResource("3_1hgip")
 
-[node name="sprite" type="Sprite2D" parent="."]
-z_index = 10
-z_as_relative = false
-scale = Vector2(0.581191, 0.582677)
-texture = ExtResource("3_1hgip")
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -32.0
 offset_top = -99.0
@@ -43,5 +37,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2voae")
 
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.581191, 0.582677)
+texture = ExtResource("3_1hgip")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -53.0
+offset_top = -18.0
+offset_right = 53.0
+offset_bottom = 25.0
+mouse_filter = 2
+bbcode_enabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

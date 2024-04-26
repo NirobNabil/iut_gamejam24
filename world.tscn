@@ -31,7 +31,7 @@ size = Vector2(367, 89)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjwwa"]
 size = Vector2(248, 224)
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["manager"]]
 script = ExtResource("1_f4ycd")
 
 [node name="Wall" type="Sprite2D" parent="."]
@@ -190,6 +190,10 @@ pot_name = "3"
 position = Vector2(508, 303)
 shape = SubResource("RectangleShape2D_wjwwa")
 
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot1" method="_on_world_typed_spell_sig"]
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot2" method="_on_world_typed_spell_sig"]
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot3" method="_on_world_typed_spell_sig"]
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot4" method="_on_world_typed_spell_sig"]
 [connection signal="ing_area_entered" from="ingredient_table" to="." method="_on_ingredient_table_ing_area_entered"]
 [connection signal="ing_selected" from="ingredient_table" to="." method="_on_ingredient_table_ing_selected"]
 [connection signal="timeout" from="ingredient_table/IngredientsRegenerateTimer" to="ingredient_table" method="_on_ingredients_regenerate_timer_timeout"]
@@ -217,10 +221,18 @@ shape = SubResource("RectangleShape2D_wjwwa")
 [connection signal="score_obtained" from="TableContainer/table3" to="." method="_on_table_score_obtained"]
 [connection signal="selected" from="TableContainer/table3" to="." method="_on_table_selected"]
 [connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot1" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot1" to="." method="_on_pot_spell_activated"]
 [connection signal="area_entered" from="cooking_table/pot2" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot2" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot2" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot2" to="." method="_on_pot_spell_activated"]
 [connection signal="area_entered" from="cooking_table/pot3" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot3" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot3" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot3" to="." method="_on_pot_spell_activated"]
 [connection signal="area_entered" from="cooking_table/pot4" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot4" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot4" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot4" to="." method="_on_pot_spell_activated"]

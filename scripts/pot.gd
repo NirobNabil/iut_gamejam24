@@ -4,6 +4,8 @@ class_name Pot
 
 signal area_entered(pot_node)
 signal selected(pot_node)
+signal spell_activated()
+signal misspelled()
 
 @export var pot_name: String
 var obj_type: String = "pot"
@@ -11,8 +13,9 @@ var obj_type: String = "pot"
 @export var cooking_texture: Texture2D
 @export var idle_texture: Texture2D
 
-const cooking_time: float = 15.0
+const cooking_time: float = 35.0
 
+var spell: String
 var contains: Array[Ing]
 var isCooking: bool = false
 var isCooked: bool = false
@@ -29,19 +32,17 @@ func _ready():
 func _process(delta):
 	if isCooking:
 		$ProgressBar.visible = true
-		if $Timer.time_left == 0:
-			set_food_ready()
-			$ProgressBar.visible = false
-		else:
-			$ProgressBar.value = ( cooking_time - $Timer.time_left)/cooking_time * 100
+		$ProgressBar.value = ( cooking_time - $Timer.time_left)/cooking_time * 100
 	else:
 		$ProgressBar.visible = false
 	pass
 
 
-#### Handle cooking
 
+
+#### Handle cooking
 func start_cooking(tex: Texture2D):
+	initialize_new_spell()
 	isCooking = true;
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
@@ -64,9 +65,13 @@ func set_food_ready():
 	add_child(cookedFood)
 	cookedFood.get_node("sprite").texture = $sprite.texture
 	$StatusLabel.text = "food ready"
-	#$sprite.texture = idle_texture
+	$sprite.texture = idle_texture
+	print("called")
+	
+	deinitialize_spell()
 
 func stop_cooking():
+	deinitialize_spell()
 	contains = []
 	isCooking = false
 	$sprite.texture = idle_texture
@@ -136,3 +141,54 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_pressed():
 		selected.emit(self)
+
+var rng = RandomNumberGenerator.new()
+func initialize_new_spell():
+	var spell_collection = get_tree().get_nodes_in_group("manager")[0].spell_collection
+	spell = spell_collection[rng.randi_range(0, spell_collection.size()-1)] 
+	write_spell( "", spell )
+	return spell
+	
+func deinitialize_spell():
+	spell = ""
+	write_spell( "", spell )
+	
+
+func write_spell(matched:String, unmatched: String):
+	$RichTextLabel.text = "[center][color=green]" + matched + "[/color]" + unmatched + "[/center]"
+
+const spell_time = 20
+func activate_spell():
+	if $Timer.time_left >= spell_time: 
+		$Timer.start( $Timer.time_left - spell_time )
+		spell = initialize_new_spell()
+	else:
+		$Timer.stop()
+		_on_timer_timeout()
+		
+	spell_activated.emit()
+
+func _on_world_typed_spell_sig(typed_spell):
+	
+	if spell == "":
+		misspelled.emit()
+		return
+	
+	var matched = ""
+	var unmatched = spell
+	if spell.substr(0, typed_spell.length()) == typed_spell:
+		matched = typed_spell
+		unmatched = spell.substr(typed_spell.length(), spell.length()-typed_spell.length()+1)
+	else:
+		misspelled.emit()
+		
+	write_spell( matched, unmatched )
+	
+	if unmatched == "":
+		activate_spell()
+
+
+
+func _on_timer_timeout():
+	set_food_ready()
+	$ProgressBar.visible = false
