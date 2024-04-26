@@ -45,6 +45,9 @@ func start_cooking(tex: Texture2D):
 	isCooking = true;
 	$Timer.start(cooking_time)
 	$sprite.texture = cooking_texture
+	
+	for part in $Smoke.get_children():
+		part.emitting = true
 
 func get_base_type():
 	for ing in contains:
@@ -71,6 +74,9 @@ func stop_cooking():
 	isCooking = false
 	$sprite.texture = idle_texture
 	$sprite.scale = initial_scale
+	
+	for part in $Smoke.get_children():
+		part.emitting = false
 	
 func pickup_food():
 	var food = cookedFood
