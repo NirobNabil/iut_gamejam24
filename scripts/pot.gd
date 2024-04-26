@@ -57,16 +57,13 @@ func set_food_ready():
 		return
 	var food: Food = load("res://prefabs/food.tscn").instantiate()
 	food.init( get_base_type(), 100, 0 )
-	print("Food base ", food.base_type)
 	for ing in contains:
 		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
-	print(cookedFood)
 	add_child(cookedFood)
 	cookedFood.get_node("sprite").texture = $sprite.texture
 	$StatusLabel.text = "food ready"
 	$sprite.texture = idle_texture
-	print("called")
 	
 	deinitialize_spell()
 
@@ -114,8 +111,8 @@ func addBase(ing_node):
 func addSpice(ing_node):
 	if contains.size() == 0:
 		return "spice can only be added after rice/meat"
-	elif check_ing_already_exists(ing_node):
-		return "same ingredient can't be added twice"
+	#elif check_ing_already_exists(ing_node):
+		#return "same ingredient can't be added twice"
 	else:
 		contains.append(ing_node)
 		return "success"
@@ -192,3 +189,10 @@ func _on_world_typed_spell_sig(typed_spell):
 func _on_timer_timeout():
 	set_food_ready()
 	$ProgressBar.visible = false
+
+
+func _on_penalty_activated():
+	if not $Timer.is_stopped():
+		$Timer.start( min( cooking_time, $Timer.time_left + 20 ) )
+		
+	

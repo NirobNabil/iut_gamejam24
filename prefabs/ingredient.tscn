@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://caosggfdfbvk4"]
+[gd_scene load_steps=7 format=3 uid="uid://caosggfdfbvk4"]
 
 [ext_resource type="Script" path="res://scripts/ingredient.gd" id="1_j6p1v"]
 [ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_d1mqo"]
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_y7na8"]
 [ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="4_0a7la"]
+[ext_resource type="Texture2D" uid="uid://dy0iwgifv31eh" path="res://textures/01_dish.png" id="5_ndd6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(136, 50)
@@ -45,6 +46,10 @@ offset_right = 136.0
 offset_bottom = 10.0
 theme_override_font_sizes/font_size = 16
 text = "MORICh"
+
+[node name="blocked_sprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_ndd6m")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

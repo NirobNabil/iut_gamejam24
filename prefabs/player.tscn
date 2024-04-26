@@ -21,10 +21,10 @@ texture = ExtResource("2_d4x6n")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="carrying_label" type="Label" parent="."]
-offset_left = -69.4444
-offset_top = -172.059
-offset_right = 6.55556
-offset_bottom = -149.059
+offset_left = -62.5
+offset_top = 7.35294
+offset_right = 13.5
+offset_bottom = 30.3529
 scale = Vector2(1.64706, 1.64706)
 text = "spice"
 label_settings = SubResource("LabelSettings_3jhsq")
@@ -32,10 +32,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="instruction_label" type="Label" parent="."]
-offset_left = -68.0556
-offset_top = -208.824
-offset_right = 7.94444
-offset_bottom = -185.824
+offset_left = -66.6667
+offset_top = -35.2941
+offset_right = 9.33338
+offset_bottom = -12.2941
 scale = Vector2(1.64706, 1.64706)
 text = "you suck"
 label_settings = SubResource("LabelSettings_3jhsq")
