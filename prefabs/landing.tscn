@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3tl3fw0je7ic"]
+[gd_scene load_steps=12 format=3 uid="uid://d3tl3fw0je7ic"]
 
+[ext_resource type="Script" path="res://scripts/landing.gd" id="1_bvlur"]
 [ext_resource type="Texture2D" uid="uid://njflrebj0lsx" path="res://textures/Landing_bg_1.png" id="1_pkflq"]
 [ext_resource type="Texture2D" uid="uid://cqpr6nuqjngfc" path="res://textures/Kazi Manna Text.png" id="2_v7uyd"]
 [ext_resource type="Texture2D" uid="uid://b1byb4eio3hmq" path="res://textures/Biriyani House Text.png" id="3_4p01x"]
+[ext_resource type="AudioStream" uid="uid://dfg85umkqtmyd" path="res://sounds/swoosh.wav" id="4_8fqwp"]
+[ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="6_swixg"]
+[ext_resource type="Texture2D" uid="uid://7kwo7thfw21x" path="res://textures/ui/Button_Rect_press.png" id="7_7xpj6"]
 
 [sub_resource type="Animation" id="Animation_pafdo"]
 resource_name = "boot"
@@ -29,6 +33,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(5.85634, 5.85634),
 "update": 0,
 "values": [Vector2(1637, 236), Vector2(360.5, 236)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Boot:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_i5jya"]
@@ -57,6 +73,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1637, 236)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Boot:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c46hs"]
 _data = {
@@ -64,9 +92,13 @@ _data = {
 "boot": SubResource("Animation_pafdo")
 }
 
-[node name="Landing" type="CanvasLayer"]
+[sub_resource type="SystemFont" id="SystemFont_dgmnu"]
+font_names = PackedStringArray("Impact")
 
-[node name="Control" type="Control" parent="."]
+[node name="Landing" type="CanvasLayer"]
+script = ExtResource("1_bvlur")
+
+[node name="Title Card" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="TextureRect" parent="Control"]
+[node name="BG" type="TextureRect" parent="Title Card"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,7 +123,7 @@ texture = ExtResource("1_pkflq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Kazi" type="TextureRect" parent="Control"]
+[node name="Kazi" type="TextureRect" parent="Title Card"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,7 +132,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1419.0
 offset_top = -220.0
-offset_right = -988.0
+offset_right = -988.001
 offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -108,7 +140,7 @@ texture = ExtResource("2_v7uyd")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Biriyani" type="TextureRect" parent="Control"]
+[node name="Biriyani" type="TextureRect" parent="Title Card"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -125,10 +157,104 @@ texture = ExtResource("3_4p01x")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="StartAnim" type="AnimationPlayer" parent="Control"]
+[node name="StartAnim" type="AnimationPlayer" parent="Title Card"]
 libraries = {
 "": SubResource("AnimationLibrary_c46hs")
 }
 autoplay = "boot"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Boot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8fqwp")
+volume_db = -11.271
+pitch_scale = 0.89
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Play" type="TextureButton" parent="Buttons"]
+self_modulate = Color(0.968627, 0.580392, 0.117647, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 10.0
+offset_right = 152.0
+offset_bottom = 88.0
+grow_horizontal = 2
+texture_normal = ExtResource("6_swixg")
+texture_pressed = ExtResource("7_7xpj6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttons/Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.984314, 0.984314, 0.662745, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.266667, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_dgmnu")
+theme_override_font_sizes/font_size = 52
+text = "Cook"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tuto" type="TextureButton" parent="Buttons"]
+self_modulate = Color(0.968627, 0.580392, 0.117647, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 101.0
+offset_right = 152.0
+offset_bottom = 179.0
+grow_horizontal = 2
+texture_normal = ExtResource("6_swixg")
+texture_pressed = ExtResource("7_7xpj6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttons/Tuto"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.984314, 0.984314, 0.662745, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.266667, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_dgmnu")
+theme_override_font_sizes/font_size = 52
+text = "How to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Buttons/Play" to="." method="_on_play_button_down" binds= [NodePath("./Buttons/Play")]]
+[connection signal="button_up" from="Buttons/Play" to="." method="_on_play_button_up" binds= [NodePath("./Buttons/Play")]]
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="button_down" from="Buttons/Tuto" to="." method="_on_play_button_down" binds= [NodePath("./Buttons/Tuto")]]
+[connection signal="button_up" from="Buttons/Tuto" to="." method="_on_play_button_up" binds= [NodePath("./Buttons/Tuto")]]
