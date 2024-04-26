@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3tl3fw0je7ic"]
+
+[ext_resource type="Texture2D" uid="uid://njflrebj0lsx" path="res://textures/Landing_bg_1.png" id="1_pkflq"]
+[ext_resource type="Texture2D" uid="uid://cqpr6nuqjngfc" path="res://textures/Kazi Manna Text.png" id="2_v7uyd"]
+[ext_resource type="Texture2D" uid="uid://b1byb4eio3hmq" path="res://textures/Biriyani House Text.png" id="3_4p01x"]
+
+[sub_resource type="Animation" id="Animation_pafdo"]
+resource_name = "boot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kazi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.85634, 5.85634),
+"update": 0,
+"values": [Vector2(-843, 104), Vector2(360.5, 104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Biriyani:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.85634, 5.85634),
+"update": 0,
+"values": [Vector2(1637, 236), Vector2(360.5, 236)]
+}
+
+[sub_resource type="Animation" id="Animation_i5jya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kazi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-843, 104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Biriyani:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1637, 236)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c46hs"]
+_data = {
+"RESET": SubResource("Animation_i5jya"),
+"boot": SubResource("Animation_pafdo")
+}
+
+[node name="Landing" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.0
+offset_top = -423.0
+offset_right = 859.0
+offset_bottom = 495.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pkflq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Kazi" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1419.0
+offset_top = -220.0
+offset_right = -988.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v7uyd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Biriyani" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1061.0
+offset_top = -88.0
+offset_right = 1492.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4p01x")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="StartAnim" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_c46hs")
+}
+autoplay = "boot"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
