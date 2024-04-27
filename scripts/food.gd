@@ -39,6 +39,11 @@ func disable_area2d():
 func disable_food_sprite():
 	$sprite.visible = false
 
+
+func add_texture( texture, scale ):
+	$sprite.texture = texture
+	$sprite.scale = scale
+
 func disable_visibility():
 	visible = false
 

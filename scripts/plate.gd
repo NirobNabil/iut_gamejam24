@@ -39,6 +39,7 @@ func combine_food():
 	#### spice level is avg of total
 	new_spice_level = new_spice_level / contains.size()
 	food.init( new_base_type, new_hotness, new_spice_level, true )
+	food.add_texture($FoodSprite.texture, $FoodSprite.scale)
 	food.disable_food_sprite()
 	add_child(food)
 	readyFood = food
@@ -50,6 +51,11 @@ func update_sprite():
 	var factor = .2
 	var y = 0
 	var scale_y = -1
+	
+	if readyFood == null and contains.size() == 0:
+		$FoodSprite.texture = null
+		return
+	
 	if readyFood != null:
 		factor = .2
 		$FoodSprite.texture = rice_meat_texture
@@ -80,7 +86,7 @@ func update_sprite():
 		$FoodSprite.texture = rice_meat_texture
 
 	$FoodSprite.transform.origin = Vector2(0, y)
-	$FoodSprite.scale *= factor
+	$FoodSprite.scale = Vector2(factor, factor)
 	if scale_y != -1:
 		$FoodSprite.scale = Vector2($FoodSprite.scale.x, scale_y)
 
@@ -113,7 +119,7 @@ func pickup_food():
 	if readyFood != null:
 		var food:Food = readyFood
 		readyFood = null
-		#update_sprite()
+		update_sprite()
 		remove_child(food)
 		return food
 	return null

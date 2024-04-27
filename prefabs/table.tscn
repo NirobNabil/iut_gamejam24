@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dc4tpqo3jmxc1"]
+[gd_scene load_steps=39 format=3 uid="uid://dc4tpqo3jmxc1"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
 [ext_resource type="AudioStream" uid="uid://gk7vv6h8x1jx" path="res://audio/order/Order2.wav" id="2_dqfqt"]
@@ -33,13 +33,23 @@
 [ext_resource type="AudioStream" uid="uid://cgupbtpr1bjmj" path="res://audio/angryCustomer/mubaAngry1.wav" id="29_e1f3y"]
 [ext_resource type="AudioStream" uid="uid://bjl0qsyr11eov" path="res://audio/angryCustomer/mubaAngry2.wav" id="30_b8qnw"]
 [ext_resource type="AudioStream" uid="uid://cjkv1qxhlnhol" path="res://audio/angryCustomer/mubaAngry3.wav" id="31_33tsq"]
+[ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="34_06fgg"]
+[ext_resource type="FontFile" uid="uid://b7o5eeiaa6mo1" path="res://fonts/Raleway-Light.ttf" id="35_qj7yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(146, 149)
 
+[sub_resource type="LabelSettings" id="LabelSettings_n8g68"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ym8li"]
+font = ExtResource("35_qj7yc")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
 [node name="table" type="Node2D"]
 script = ExtResource("1_4dm1x")
-order_soundtracks = Array[AudioStreamWAV]([ExtResource("2_dqfqt"), ExtResource("3_nwnpo"), ExtResource("4_u5sfj"), ExtResource("5_tdc4s"), ExtResource("6_k84qb"), ExtResource("7_f38vv")])
+order_soundtracks = Array[AudioStreamWAV]([ExtResource("2_dqfqt"), ExtResource("5_tdc4s"), ExtResource("6_k84qb"), ExtResource("7_f38vv"), ExtResource("4_u5sfj"), ExtResource("3_nwnpo")])
 waiting_soundtracks = Array[AudioStreamWAV]([ExtResource("7_ftfkr"), ExtResource("8_20vdo"), ExtResource("9_5gsni"), ExtResource("10_r0buk"), ExtResource("11_vtnjv"), ExtResource("12_dudxq"), ExtResource("14_lebjo"), ExtResource("15_ybijn"), ExtResource("16_hpo65")])
 happy_soundtracks = Array[AudioStreamWAV]([ExtResource("17_ku5wi"), ExtResource("18_io443"), ExtResource("19_6v7j4"), ExtResource("20_dn53o"), ExtResource("21_31fd2"), ExtResource("22_jdgo4"), ExtResource("23_i6nww")])
 angry_soundtracks = Array[AudioStreamWAV]([ExtResource("24_ft082"), ExtResource("25_s6c1a"), ExtResource("26_tmieg"), ExtResource("27_6naw7"), ExtResource("28_62s3p"), ExtResource("29_e1f3y"), ExtResource("30_b8qnw"), ExtResource("31_33tsq")])
@@ -53,18 +63,6 @@ texture = ExtResource("4_h5pt2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2voae")
-
-[node name="CustomerRequest" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -110.0
-offset_right = 24.0
-offset_bottom = -87.0
-
-[node name="PatienceTimeLabel" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -143.0
-offset_right = 18.0
-offset_bottom = -120.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -98,6 +96,34 @@ offset_bottom = 19.0
 scale = Vector2(2.75001, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Patience"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_ft082")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -14.0
+offset_top = -132.0
+offset_right = 367.0
+offset_bottom = -34.0
+scale = Vector2(0.434909, 0.95712)
+texture = ExtResource("34_06fgg")
+
+[node name="PatienceTimeLabel" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -143.0
+offset_right = 18.0
+offset_bottom = -120.0
+label_settings = SubResource("LabelSettings_n8g68")
+
+[node name="CustomerRequest" type="Label" parent="."]
+offset_left = -2.0
+offset_top = -126.0
+offset_right = 93.0
+offset_bottom = -103.0
+scale = Vector2(1.49215, 1.41826)
+text = "Chicken biryani"
+label_settings = SubResource("LabelSettings_ym8li")
+autowrap_mode = 2
 
 [connection signal="score_obtained" from="." to="." method="_on_score_obtained"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

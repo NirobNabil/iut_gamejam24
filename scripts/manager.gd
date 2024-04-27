@@ -13,7 +13,7 @@ var spell_states = {}
 var typed_spell = ""
 var misspell_count: int
 
-var spell_collection = ["WAS", "QWE", "QTRW", "GONE"]
+var spell_collection = ["ZEST", "VAR", "VET", "STRESS", "TRES", "TREE", "WREC", "XVED", "XCAY", "VREX", "DEAD", "WAS", "RAGE", "WAR", "RAVEN", "ABYSS", "DECAY", "CURSE", "WRATH"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -245,6 +245,9 @@ func _on_pot_misspelled():
 func _on_table_reputation_loss():
 	print("called on repitaton loss ", reputation)
 	reputation -= 1
+	$Hud/ReputationContainer.text = str( int(reputation) )
+	if reputation == 0:
+		game_over()
 
 
 func _on_texture_button_pressed():
