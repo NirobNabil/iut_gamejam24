@@ -52,7 +52,7 @@ expand_mode = 1
 stretch_mode = 1
 visible = false
 position = Vector2(500, 110)
-texture = ExtResource("2_71foo")
+texture = ExtResource("3_x3g48")
 
 [node name="Floor" type="Sprite2D" parent="."]
 visible = false
@@ -140,7 +140,7 @@ position = Vector2(703, 606)
 [node name="Sprite2D" type="Sprite2D" parent="PlateContainer"]
 position = Vector2(569, 97)
 scale = Vector2(2.06, 1.82813)
-texture = ExtResource("15_xe2bq")
+; texture = ExtResource("15_xe2bq")
 
 [node name="Plate1" parent="PlateContainer" instance=ExtResource("13_m5j6u")]
 position = Vector2(456, 64)
