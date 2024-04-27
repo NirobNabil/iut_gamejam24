@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=33 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
 [ext_resource type="PackedScene" uid="uid://cqbf2y6nhwg7c" path="res://prefabs/player.tscn" id="1_xlphq"]
 [ext_resource type="Texture2D" uid="uid://njflrebj0lsx" path="res://textures/Landing_bg_1.png" id="2_8wnas"]
 [ext_resource type="Script" path="res://scripts/ingredient_table.gd" id="2_i2qm7"]
+[ext_resource type="Texture2D" uid="uid://dvdq5lws6hx5y" path="res://textures/floor_tile.png" id="3_0gqsr"]
 [ext_resource type="Texture2D" uid="uid://00726gyqmkib" path="res://textures/Floor.png" id="3_fr858"]
 [ext_resource type="Texture2D" uid="uid://bsg0538yy2pfk" path="res://textures/mosaic1.jpg" id="3_x3g48"]
 [ext_resource type="Resource" uid="uid://cgkms73isshce" path="res://ingredients/spice.tres" id="4_j7ncp"]
@@ -16,11 +17,18 @@
 [ext_resource type="PackedScene" uid="uid://bidorsyujnfjp" path="res://prefabs/bin.tscn" id="8_efiyb"]
 [ext_resource type="PackedScene" uid="uid://dc4tpqo3jmxc1" path="res://prefabs/table.tscn" id="9_gsfln"]
 [ext_resource type="Resource" uid="uid://c5p6hb4euc0d" path="res://ingredients/mutton.tres" id="9_icuew"]
-[ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="9_vin4u"]
 [ext_resource type="PackedScene" uid="uid://5whx3uiu5mx3" path="res://prefabs/fan.tscn" id="12_mu1qa"]
 [ext_resource type="PackedScene" uid="uid://b33mmb8y6tx57" path="res://prefabs/plate.tscn" id="13_m5j6u"]
 [ext_resource type="PackedScene" uid="uid://clkdu3i2jp260" path="res://prefabs/ingMarker.tscn" id="13_u5coh"]
-[ext_resource type="Texture2D" uid="uid://d3tkvepflhwnf" path="res://textures/plate_holder2.png" id="17_tb3px"]
+[ext_resource type="Texture2D" uid="uid://b7b0ukk2vvsjf" path="res://textures/long_table_1.png" id="15_8rrta"]
+[ext_resource type="Texture2D" uid="uid://k1g4ew88vysh" path="res://textures/plate_table_1.png" id="18_37t03"]
+[ext_resource type="Texture2D" uid="uid://bc3e5vcyj256c" path="res://textures/cook_table_shorter.png" id="22_tc2ve"]
+[ext_resource type="Texture2D" uid="uid://cty0yd1m3xk4h" path="res://textures/cook_table_front.png" id="23_3xkco"]
+[ext_resource type="Texture2D" uid="uid://banr40obb0x5q" path="res://textures/cook_top_shiny.png" id="24_lm82v"]
+[ext_resource type="Texture2D" uid="uid://d1khw1o0dhd0q" path="res://textures/Road.png" id="25_bbqch"]
+[ext_resource type="Texture2D" uid="uid://b1cjita82b03m" path="res://textures/stair new.png" id="26_j5c1b"]
+[ext_resource type="Texture2D" uid="uid://dl0uldcx37bc2" path="res://textures/wall2.png" id="27_btkvh"]
+[ext_resource type="Texture2D" uid="uid://csukvumvaybmg" path="res://textures/cng.png" id="29_u7sw1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8i0fv"]
 vertices = PackedVector2Array(967, 627, 931, 627, 967, 622, 396, 116, 720, 209, 454, 204, 288, 182, 288, 88, 296, 293, 453, 432, 907, 64, 908, 627, 720, 435, 830, 108, 522, 627, 521, 569, 456, 571, 295, 394, 455, 627, 185, 294, 196, 174, 833, 39, 971, 39, 970, 64, 394, 41, 8, 43, 190, 91, 9, 627, 185, 391)
@@ -32,7 +40,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 size = Vector2(367, 89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjwwa"]
-size = Vector2(248, 224)
+size = Vector2(248, 327)
 
 [node name="World" type="Node2D" groups=["manager"]]
 position = Vector2(2, 3)
@@ -43,11 +51,22 @@ position = Vector2(654, -96)
 scale = Vector2(0.244798, 0.244798)
 texture = ExtResource("2_8wnas")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 417.0
-offset_top = 110.0
-offset_right = 4262.0
-offset_bottom = 1673.0
+[node name="Mosaic2" type="TextureRect" parent="."]
+modulate = Color(0.827451, 0.827451, 0.827451, 1)
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 3781.0
+offset_bottom = 2127.0
+scale = Vector2(0.336029, 0.336029)
+texture = ExtResource("3_0gqsr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Mosaic" type="TextureRect" parent="."]
+offset_left = 379.0
+offset_top = 33.0
+offset_right = 4224.0
+offset_bottom = 1069.0
 scale = Vector2(0.336029, 0.336029)
 texture = ExtResource("3_x3g48")
 expand_mode = 1
@@ -64,15 +83,10 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_8i0fv")
 
 [node name="ingredient_table" type="StaticBody2D" parent="." node_paths=PackedStringArray("ing_markers")]
-position = Vector2(-56, 0)
+position = Vector2(-928, 75)
 script = ExtResource("2_i2qm7")
 ing_markers = [NodePath("IngMarker"), NodePath("IngMarker2"), NodePath("IngMarker3"), NodePath("IngMarker4"), NodePath("IngMarker5"), NodePath("IngMarker6"), NodePath("IngMarker7")]
 ing_resources = Array[Resource("res://scripts/ing_res.gd")]([ExtResource("5_nk6uk"), ExtResource("5_lcq8y"), ExtResource("9_icuew"), ExtResource("7_c66nt"), ExtResource("4_j7ncp"), ExtResource("7_gq7pb"), ExtResource("8_71v2x")])
-
-[node name="Sprite2D" type="Sprite2D" parent="ingredient_table"]
-position = Vector2(1007, 347)
-scale = Vector2(0.320895, 32.4706)
-texture = ExtResource("9_vin4u")
 
 [node name="pos_markers" type="Node2D" parent="ingredient_table"]
 
@@ -105,8 +119,13 @@ position = Vector2(1007, 473.715)
 [node name="IngMarker7" parent="ingredient_table" instance=ExtResource("13_u5coh")]
 position = Vector2(1007, 538.88)
 
+[node name="LongTable1" type="Sprite2D" parent="ingredient_table"]
+position = Vector2(1004, 340)
+scale = Vector2(0.188139, 0.188139)
+texture = ExtResource("15_8rrta")
+
 [node name="bin" parent="." instance=ExtResource("8_efiyb")]
-position = Vector2(803, 78)
+position = Vector2(414, 656)
 
 [node name="Hud" type="Node2D" parent="."]
 
@@ -124,6 +143,7 @@ offset_right = 140.0
 offset_bottom = 60.0
 
 [node name="FanContainer" type="Node2D" parent="."]
+position = Vector2(0, -182)
 
 [node name="Fan" parent="FanContainer" instance=ExtResource("12_mu1qa")]
 position = Vector2(489, 608)
@@ -135,11 +155,12 @@ position = Vector2(597, 606)
 position = Vector2(703, 606)
 
 [node name="PlateContainer" type="StaticBody2D" parent="."]
+position = Vector2(109, 569)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlateContainer"]
-position = Vector2(569, 97)
-scale = Vector2(2.06, 1.82813)
-texture = ExtResource("17_tb3px")
+position = Vector2(578, 98)
+scale = Vector2(0.271936, 0.241327)
+texture = ExtResource("18_37t03")
 
 [node name="Plate1" parent="PlateContainer" instance=ExtResource("13_m5j6u")]
 position = Vector2(456, 64)
@@ -155,17 +176,22 @@ position = Vector2(575.5, 65.5)
 shape = SubResource("RectangleShape2D_476d0")
 
 [node name="TableContainer" type="Node2D" parent="."]
+position = Vector2(0, -39)
 
 [node name="table" parent="TableContainer" instance=ExtResource("9_gsfln")]
-position = Vector2(238, 135)
+position = Vector2(1048, 89)
 
 [node name="table2" parent="TableContainer" instance=ExtResource("9_gsfln")]
-position = Vector2(240, 345)
+position = Vector2(782, 91)
 
 [node name="table3" parent="TableContainer" instance=ExtResource("9_gsfln")]
-position = Vector2(239, 551)
+position = Vector2(784, 297)
+
+[node name="table4" parent="TableContainer" instance=ExtResource("9_gsfln")]
+position = Vector2(1048, 297)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 offset_left = 464.0
 offset_top = 302.0
 offset_right = 707.0
@@ -177,6 +203,7 @@ color = Color(0.784314, 0.603922, 0.427451, 1)
 position = Vector2(113, 75)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = 461.0
 offset_top = 189.0
 offset_right = 704.0
@@ -185,9 +212,10 @@ mouse_filter = 2
 color = Color(0.784314, 0.603922, 0.427451, 1)
 
 [node name="cooking_table" type="StaticBody2D" parent="."]
-position = Vector2(79, 20)
+position = Vector2(499, 177)
 
 [node name="ColorRect" type="ColorRect" parent="cooking_table"]
+visible = false
 offset_left = 384.0
 offset_top = 189.0
 offset_right = 627.0
@@ -195,35 +223,107 @@ offset_bottom = 421.0
 mouse_filter = 2
 color = Color(0.81, 0.8019, 0.8019, 1)
 
-[node name="pot1" parent="cooking_table" instance=ExtResource("1_c0c68")]
-position = Vector2(435, 233)
-pot_name = "1"
-
-[node name="pot2" parent="cooking_table" instance=ExtResource("1_c0c68")]
-position = Vector2(586, 235)
-pot_name = "2"
-
 [node name="pot3" parent="cooking_table" instance=ExtResource("1_c0c68")]
-position = Vector2(437, 366)
+position = Vector2(437, 415)
 pot_name = "3"
 
 [node name="pot4" parent="cooking_table" instance=ExtResource("1_c0c68")]
-position = Vector2(584, 368)
+position = Vector2(584, 417)
 pot_name = "3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cooking_table"]
-position = Vector2(508, 303)
+visible = false
+position = Vector2(508, 434.5)
 shape = SubResource("RectangleShape2D_wjwwa")
 
+[node name="pot1" parent="cooking_table" instance=ExtResource("1_c0c68")]
+position = Vector2(435, 300)
+pot_name = "1"
+
+[node name="pot2" parent="cooking_table" instance=ExtResource("1_c0c68")]
+position = Vector2(586, 302)
+pot_name = "2"
+
+[node name="CookTable" type="Sprite2D" parent="cooking_table"]
+visible = false
+position = Vector2(506, 468)
+scale = Vector2(0.546404, 0.546404)
+texture = ExtResource("22_tc2ve")
+
+[node name="Front" type="Sprite2D" parent="cooking_table"]
+z_index = 4
+z_as_relative = false
+position = Vector2(506, 508.968)
+scale = Vector2(0.568019, 0.221054)
+texture = ExtResource("23_3xkco")
+
+[node name="Top" type="Sprite2D" parent="cooking_table"]
+z_index = 6
+z_as_relative = false
+position = Vector2(506, 397)
+scale = Vector2(0.546404, 0.546404)
+texture = ExtResource("24_lm82v")
+
+[node name="Road" type="Sprite2D" parent="."]
+position = Vector2(1370, 526.746)
+scale = Vector2(1.04225, 1.42765)
+texture = ExtResource("25_bbqch")
+
+[node name="StairNew" type="Sprite2D" parent="."]
+position = Vector2(1227, 402)
+scale = Vector2(0.268775, 1.05653)
+texture = ExtResource("26_j5c1b")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -96.0
+offset_top = 731.0
+offset_right = 1204.0
+offset_bottom = 769.0
+color = Color(0.819608, 0.827451, 0.831373, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0.47451, 0.47451, 0.47451, 1)
+
+[node name="Wall2" type="Sprite2D" parent="Node2D"]
+position = Vector2(789, 377)
+scale = Vector2(2.6711, 0.0531562)
+texture = ExtResource("27_btkvh")
+
+[node name="Wall4" type="Sprite2D" parent="Node2D"]
+position = Vector2(588.5, 732)
+scale = Vector2(4.01661, 0.0332228)
+texture = ExtResource("27_btkvh")
+
+[node name="Wall5" type="Sprite2D" parent="Node2D"]
+position = Vector2(-0.999521, 345.829)
+rotation = 1.57079
+scale = Vector2(2.58253, 0.0531562)
+texture = ExtResource("27_btkvh")
+
+[node name="Wall3" type="Sprite2D" parent="Node2D"]
+position = Vector2(384, -115)
+scale = Vector2(0.0332225, 1.39867)
+texture = ExtResource("27_btkvh")
+
+[node name="Wall6" type="Sprite2D" parent="Node2D"]
+position = Vector2(385, 357)
+scale = Vector2(0.0398671, 0.186046)
+texture = ExtResource("27_btkvh")
+
+[node name="Cng" type="Sprite2D" parent="."]
+position = Vector2(1353, 550)
+scale = Vector2(0.628159, 0.628159)
+texture = ExtResource("29_u7sw1")
+
 [connection signal="penalty_activated" from="." to="ingredient_table" method="_on_penalty_activated"]
-[connection signal="penalty_activated" from="." to="cooking_table/pot1" method="_on_penalty_activated"]
-[connection signal="penalty_activated" from="." to="cooking_table/pot2" method="_on_penalty_activated"]
 [connection signal="penalty_activated" from="." to="cooking_table/pot3" method="_on_penalty_activated"]
 [connection signal="penalty_activated" from="." to="cooking_table/pot4" method="_on_penalty_activated"]
-[connection signal="typed_spell_sig" from="." to="cooking_table/pot1" method="_on_world_typed_spell_sig"]
-[connection signal="typed_spell_sig" from="." to="cooking_table/pot2" method="_on_world_typed_spell_sig"]
+[connection signal="penalty_activated" from="." to="cooking_table/pot1" method="_on_penalty_activated"]
+[connection signal="penalty_activated" from="." to="cooking_table/pot2" method="_on_penalty_activated"]
 [connection signal="typed_spell_sig" from="." to="cooking_table/pot3" method="_on_world_typed_spell_sig"]
 [connection signal="typed_spell_sig" from="." to="cooking_table/pot4" method="_on_world_typed_spell_sig"]
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot1" method="_on_world_typed_spell_sig"]
+[connection signal="typed_spell_sig" from="." to="cooking_table/pot2" method="_on_world_typed_spell_sig"]
 [connection signal="ing_area_entered" from="ingredient_table" to="." method="_on_ingredient_table_ing_area_entered"]
 [connection signal="ing_selected" from="ingredient_table" to="." method="_on_ingredient_table_ing_selected"]
 [connection signal="timeout" from="ingredient_table/IngredientsRegenerateTimer" to="ingredient_table" method="_on_ingredients_regenerate_timer_timeout"]
@@ -261,14 +361,10 @@ shape = SubResource("RectangleShape2D_wjwwa")
 [connection signal="reputation_loss" from="TableContainer/table3" to="." method="_on_table_reputation_loss"]
 [connection signal="score_obtained" from="TableContainer/table3" to="." method="_on_table_score_obtained"]
 [connection signal="selected" from="TableContainer/table3" to="." method="_on_table_selected"]
-[connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
-[connection signal="misspelled" from="cooking_table/pot1" to="." method="_on_pot_misspelled"]
-[connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
-[connection signal="spell_activated" from="cooking_table/pot1" to="." method="_on_pot_spell_activated"]
-[connection signal="area_entered" from="cooking_table/pot2" to="." method="_on_pot_area_entered"]
-[connection signal="misspelled" from="cooking_table/pot2" to="." method="_on_pot_misspelled"]
-[connection signal="selected" from="cooking_table/pot2" to="." method="_on_pot_selected"]
-[connection signal="spell_activated" from="cooking_table/pot2" to="." method="_on_pot_spell_activated"]
+[connection signal="area_entered" from="TableContainer/table4" to="." method="_on_table_area_entered"]
+[connection signal="reputation_loss" from="TableContainer/table4" to="." method="_on_table_reputation_loss"]
+[connection signal="score_obtained" from="TableContainer/table4" to="." method="_on_table_score_obtained"]
+[connection signal="selected" from="TableContainer/table4" to="." method="_on_table_selected"]
 [connection signal="area_entered" from="cooking_table/pot3" to="." method="_on_pot_area_entered"]
 [connection signal="misspelled" from="cooking_table/pot3" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot3" to="." method="_on_pot_selected"]
@@ -277,3 +373,11 @@ shape = SubResource("RectangleShape2D_wjwwa")
 [connection signal="misspelled" from="cooking_table/pot4" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot4" to="." method="_on_pot_selected"]
 [connection signal="spell_activated" from="cooking_table/pot4" to="." method="_on_pot_spell_activated"]
+[connection signal="area_entered" from="cooking_table/pot1" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot1" to="." method="_on_pot_misspelled"]
+[connection signal="selected" from="cooking_table/pot1" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot1" to="." method="_on_pot_spell_activated"]
+[connection signal="area_entered" from="cooking_table/pot2" to="." method="_on_pot_area_entered"]
+[connection signal="misspelled" from="cooking_table/pot2" to="." method="_on_pot_misspelled"]
+[connection signal="selected" from="cooking_table/pot2" to="." method="_on_pot_selected"]
+[connection signal="spell_activated" from="cooking_table/pot2" to="." method="_on_pot_spell_activated"]

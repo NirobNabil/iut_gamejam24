@@ -15,6 +15,8 @@ script = ExtResource("1_snwn1")
 navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+z_as_relative = false
 scale = Vector2(0.714286, 0.714286)
 texture = ExtResource("2_d4x6n")
 

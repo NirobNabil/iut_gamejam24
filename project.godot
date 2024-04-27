@@ -22,4 +22,6 @@ BgSound="*res://bg_sound.tscn"
 
 [display]
 
+window/size/viewport_width=1470
+window/size/viewport_height=768
 window/stretch/mode="viewport"
