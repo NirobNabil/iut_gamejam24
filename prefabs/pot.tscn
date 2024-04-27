@@ -48,7 +48,7 @@ shape = SubResource("RectangleShape2D_2voae")
 
 [node name="Smoke" parent="." instance=ExtResource("5_4w46n")]
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite2" type="Sprite2D" parent="."]
 scale = Vector2(0.581191, 0.582677)
 texture = ExtResource("3_1hgip")
 

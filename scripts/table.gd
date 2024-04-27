@@ -5,6 +5,12 @@ class_name Table
 signal area_entered(table_node)
 signal selected(table_node)
 signal score_obtained(score)
+@export var order_soundtracks: Array[AudioStreamWAV]
+@export var waiting_soundtracks: Array[AudioStreamWAV]
+@export var happy_soundtracks: Array[AudioStreamWAV]
+@export var angry_soundtracks: Array[AudioStreamWAV]
+
+
 
 var obj_type: String = "table"
 var food: Node2D = null

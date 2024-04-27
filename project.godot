@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Super="*res://scripts/super.gd"
+BgSound="*res://bg_sound.tscn"
 
 [display]
 
