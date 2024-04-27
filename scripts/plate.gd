@@ -46,24 +46,43 @@ func combine_food():
 
 func update_sprite():
 	print("update  sprite ", contains.size())
+	var tex_size = -1
+	var factor = .2
+	var y = 0
+	var scale_y = -1
 	if readyFood != null:
-		$sprite.texture = rice_meat_texture
-	elif contains.size() == 0:
-		$sprite.texture = empty_texture
+		factor = .2
+		$FoodSprite.texture = rice_meat_texture
+	#elif contains.size() == 0:
+		#tex_size = 740
+		#$FoodSprite.texture = empty_texture
 	elif contains.size() == 1:
 		print(contains[0].base_type)
 		if contains[0].base_type == "rice":
-			$sprite.texture = rice_texture
+			factor = 0.15
+			y = -19.318
+			scale_y = .2
+			$FoodSprite.texture = rice_texture
 		elif contains[0].base_type == "meat":
-			$sprite.texture = meat_texture
+			tex_size = 740
+			$FoodSprite.texture = meat_texture
 		elif contains[0].base_type == "mutton":
-			$sprite.texture = meat_texture
+			tex_size = 740
+			$FoodSprite.texture = mutton_texture
 		elif contains[0].base_type == "beef":
-			$sprite.texture = meat_texture
+			tex_size = 740
+			$FoodSprite.texture = meat_texture
 		elif contains[0].base_type == "chicken":
-			$sprite.texture = chicken_texture
+			factor = .2
+			$FoodSprite.texture = chicken_texture
 	elif contains.size() == 2:
-		$sprite.texture = rice_meat_texture
+		tex_size = 740
+		$FoodSprite.texture = rice_meat_texture
+
+	$FoodSprite.transform.origin = Vector2(0, y)
+	$FoodSprite.scale *= factor
+	if scale_y != -1:
+		$FoodSprite.scale = Vector2($FoodSprite.scale.x, scale_y)
 
 func put_food(item: Food):
 	if not item is Food:

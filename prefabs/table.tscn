@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
 [ext_resource type="AudioStream" uid="uid://gk7vv6h8x1jx" path="res://audio/order/Order2.wav" id="2_dqfqt"]
 [ext_resource type="AudioStream" uid="uid://d2e6fku3h7hp2" path="res://audio/order/Order1.wav" id="3_nwnpo"]
+[ext_resource type="Texture2D" uid="uid://b6ouxm54ubvj3" path="res://textures/ui/circle.png" id="3_db1p6"]
 [ext_resource type="Texture2D" uid="uid://ccl7ng2lb1bo" path="res://textures/table.png" id="4_h5pt2"]
 [ext_resource type="AudioStream" uid="uid://ci824lo6vske3" path="res://audio/order/NabilOrder2.wav" id="4_u5sfj"]
 [ext_resource type="AudioStream" uid="uid://c46dl0oqbb0j2" path="res://audio/order/NabilOrder1.wav" id="5_tdc4s"]
@@ -72,20 +73,21 @@ one_shot = true
 one_shot = true
 
 [node name="PatienceBar" type="TextureProgressBar" parent="."]
-offset_left = -43.0
-offset_top = -81.0
-offset_right = 225.0
-offset_bottom = -64.0
-scale = Vector2(0.319999, 1)
+offset_left = -53.0
+offset_top = -87.0
+offset_right = 215.0
+offset_bottom = -15.0
+scale = Vector2(0.439997, 0.360001)
 value = 50.0
 fill_mode = 4
-texture_under = ExtResource("3_4umbo")
-texture_over = ExtResource("3_4umbo")
-texture_progress = ExtResource("3_4umbo")
+texture_under = ExtResource("3_db1p6")
+texture_over = ExtResource("3_db1p6")
+texture_progress = ExtResource("3_db1p6")
 tint_over = Color(1, 0, 0, 0)
 tint_progress = Color(1, 0.00999999, 0.00999999, 1)
 
 [node name="Patience" type="Label" parent="PatienceBar"]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 50.0002
