@@ -9,7 +9,7 @@ signal selected_fan(fan_node)
 @export var rotate_speed: float = 20.0
 var contains: Node2D = null
 
-const cooldown_time = 20.0
+const cooldown_time = 10.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
