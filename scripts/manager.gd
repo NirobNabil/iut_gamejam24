@@ -19,7 +19,6 @@ var spell_collection = ["ZEST", "VAR", "VET", "STRESS", "TRES", "TREE", "WREC", 
 func _ready():
 	$Hud/ScoreContainer.text = str(score)
 	$Hud/ReputationContainer.text = str(reputation)
-	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -114,7 +113,7 @@ func handle_table_action(table: Table):
 	if obj != null and obj.obj_type != "food":
 		$Player.set_info("Only cooked food can be served")
 		return
-	var status: String  = table.put_food(obj)
+	var status: String  = await table.put_food(obj)
 	if status != "success":
 		$Player.set_info(status)
 		return
@@ -181,6 +180,7 @@ func check_and_set_reached(node: Node2D):
 		target_reached = false
 
 func game_over():
+	$GameOver/Control/GameOver.text = "Game Over\n Score: " + str(score)
 	$GameOver.visible = true
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dc4tpqo3jmxc1"]
+[gd_scene load_steps=40 format=3 uid="uid://dc4tpqo3jmxc1"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
 [ext_resource type="AudioStream" uid="uid://gk7vv6h8x1jx" path="res://audio/order/Order2.wav" id="2_dqfqt"]
@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://cjkv1qxhlnhol" path="res://audio/angryCustomer/mubaAngry3.wav" id="31_33tsq"]
 [ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="34_06fgg"]
 [ext_resource type="FontFile" uid="uid://b7o5eeiaa6mo1" path="res://fonts/Raleway-Light.ttf" id="35_qj7yc"]
+[ext_resource type="Texture2D" uid="uid://dm8oldhu0ck32" path="res://textures/Excalim.png" id="36_qnuhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(146, 149)
@@ -98,7 +99,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Patience"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("24_ft082")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -14.0
@@ -125,8 +125,16 @@ text = "Chicken biryani"
 label_settings = SubResource("LabelSettings_ym8li")
 autowrap_mode = 2
 
+[node name="RageTimer" type="Timer" parent="."]
+
+[node name="ExclaimSprite" type="Sprite2D" parent="."]
+position = Vector2(130, -139)
+scale = Vector2(0.110238, 0.110238)
+texture = ExtResource("36_qnuhb")
+
 [connection signal="score_obtained" from="." to="." method="_on_score_obtained"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="PatienceTimer" to="." method="_on_patience_timer_timeout"]
+[connection signal="timeout" from="RageTimer" to="." method="_on_rage_timer_timeout"]
