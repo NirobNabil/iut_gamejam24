@@ -6,6 +6,12 @@ signal area_entered(table_node)
 signal selected(table_node)
 signal score_obtained(score)
 signal reputation_loss()
+@export var order_soundtracks: Array[AudioStreamWAV]
+@export var waiting_soundtracks: Array[AudioStreamWAV]
+@export var happy_soundtracks: Array[AudioStreamWAV]
+@export var angry_soundtracks: Array[AudioStreamWAV]
+
+
 
 var obj_type: String = "table"
 var food: Food = null

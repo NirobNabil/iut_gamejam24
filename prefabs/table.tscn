@@ -1,14 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc4tpqo3jmxc1"]
+[gd_scene load_steps=34 format=3 uid="uid://dc4tpqo3jmxc1"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
-[ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="3_4umbo"]
+[ext_resource type="AudioStream" uid="uid://gk7vv6h8x1jx" path="res://audio/order/Order2.wav" id="2_dqfqt"]
+[ext_resource type="AudioStream" uid="uid://d2e6fku3h7hp2" path="res://audio/order/Order1.wav" id="3_nwnpo"]
 [ext_resource type="Texture2D" uid="uid://ccl7ng2lb1bo" path="res://textures/table.png" id="4_h5pt2"]
+[ext_resource type="AudioStream" uid="uid://ci824lo6vske3" path="res://audio/order/NabilOrder2.wav" id="4_u5sfj"]
+[ext_resource type="AudioStream" uid="uid://c46dl0oqbb0j2" path="res://audio/order/NabilOrder1.wav" id="5_tdc4s"]
+[ext_resource type="AudioStream" uid="uid://4vrhjv7g4y2b" path="res://audio/order/MubaOrder2.wav" id="6_k84qb"]
+[ext_resource type="AudioStream" uid="uid://b82o0jn6qjara" path="res://audio/order/mubaOrder1.wav" id="7_f38vv"]
+[ext_resource type="AudioStream" uid="uid://dqvhttbonbs2w" path="res://audio/waiting/MubaWait4.wav" id="7_ftfkr"]
+[ext_resource type="AudioStream" uid="uid://f53khm56f751" path="res://audio/waiting/MubaWait5.wav" id="8_20vdo"]
+[ext_resource type="AudioStream" uid="uid://cq4qxg63ktkay" path="res://audio/waiting/NabilWaiting2.wav" id="9_5gsni"]
+[ext_resource type="AudioStream" uid="uid://cy633s5simuj6" path="res://audio/waiting/Waiting1.wav" id="10_r0buk"]
+[ext_resource type="AudioStream" uid="uid://bwi1v7lqlwrtr" path="res://audio/waiting/Waiting3.wav" id="11_vtnjv"]
+[ext_resource type="AudioStream" uid="uid://bbnjrm6cnns8w" path="res://audio/waiting/Waiting6.wav" id="12_dudxq"]
+[ext_resource type="AudioStream" uid="uid://dsli1f1ihl7t5" path="res://audio/waiting/mubaWaiting1.wav" id="14_lebjo"]
+[ext_resource type="AudioStream" uid="uid://c8647l58u7rea" path="res://audio/waiting/mubaWaiting2.wav" id="15_ybijn"]
+[ext_resource type="AudioStream" uid="uid://802m6r1jkhdl" path="res://audio/waiting/mubaWaiting3.wav" id="16_hpo65"]
+[ext_resource type="AudioStream" uid="uid://ec5lhr6gppff" path="res://audio/happyCustomer/HappyCus1.wav" id="17_ku5wi"]
+[ext_resource type="AudioStream" uid="uid://dnltj156gb0tl" path="res://audio/happyCustomer/HappyCus2.wav" id="18_io443"]
+[ext_resource type="AudioStream" uid="uid://c8tiogbbomku8" path="res://audio/happyCustomer/HappyCus3.wav" id="19_6v7j4"]
+[ext_resource type="AudioStream" uid="uid://bbiwvb4gu0ct6" path="res://audio/happyCustomer/HappyCus4.wav" id="20_dn53o"]
+[ext_resource type="AudioStream" uid="uid://bbxlv3avw0mfj" path="res://audio/happyCustomer/mubaHappy1.wav" id="21_31fd2"]
+[ext_resource type="AudioStream" uid="uid://cqxisrocutx2i" path="res://audio/happyCustomer/mubaHappy2.wav" id="22_jdgo4"]
+[ext_resource type="AudioStream" uid="uid://hvta4bsyuuvi" path="res://audio/happyCustomer/mubaHappy3.wav" id="23_i6nww"]
+[ext_resource type="AudioStream" uid="uid://j6kv7ghuj5ct" path="res://audio/angryCustomer/AngryCus1.wav" id="24_ft082"]
+[ext_resource type="AudioStream" uid="uid://cbaqxj1d11k20" path="res://audio/angryCustomer/AngryCus2.wav" id="25_s6c1a"]
+[ext_resource type="AudioStream" uid="uid://besfmi660i0pu" path="res://audio/angryCustomer/AngryCus3.wav" id="26_tmieg"]
+[ext_resource type="AudioStream" uid="uid://yq7vtkbnjwrm" path="res://audio/angryCustomer/AngryCus4.wav" id="27_6naw7"]
+[ext_resource type="AudioStream" uid="uid://bxw5gwfyffrex" path="res://audio/angryCustomer/NabilAngryCus4.wav" id="28_62s3p"]
+[ext_resource type="AudioStream" uid="uid://cgupbtpr1bjmj" path="res://audio/angryCustomer/mubaAngry1.wav" id="29_e1f3y"]
+[ext_resource type="AudioStream" uid="uid://bjl0qsyr11eov" path="res://audio/angryCustomer/mubaAngry2.wav" id="30_b8qnw"]
+[ext_resource type="AudioStream" uid="uid://cjkv1qxhlnhol" path="res://audio/angryCustomer/mubaAngry3.wav" id="31_33tsq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(146, 149)
 
 [node name="table" type="Node2D"]
 script = ExtResource("1_4dm1x")
+order_soundtracks = Array[AudioStreamWAV]([ExtResource("2_dqfqt"), ExtResource("3_nwnpo"), ExtResource("4_u5sfj"), ExtResource("5_tdc4s"), ExtResource("6_k84qb"), ExtResource("7_f38vv")])
+waiting_soundtracks = Array[AudioStreamWAV]([ExtResource("7_ftfkr"), ExtResource("8_20vdo"), ExtResource("9_5gsni"), ExtResource("10_r0buk"), ExtResource("11_vtnjv"), ExtResource("12_dudxq"), ExtResource("14_lebjo"), ExtResource("15_ybijn"), ExtResource("16_hpo65")])
+happy_soundtracks = Array[AudioStreamWAV]([ExtResource("17_ku5wi"), ExtResource("18_io443"), ExtResource("19_6v7j4"), ExtResource("20_dn53o"), ExtResource("21_31fd2"), ExtResource("22_jdgo4"), ExtResource("23_i6nww")])
+angry_soundtracks = Array[AudioStreamWAV]([ExtResource("24_ft082"), ExtResource("25_s6c1a"), ExtResource("26_tmieg"), ExtResource("27_6naw7"), ExtResource("28_62s3p"), ExtResource("29_e1f3y"), ExtResource("30_b8qnw"), ExtResource("31_33tsq")])
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.0603516, 0.0605059)
