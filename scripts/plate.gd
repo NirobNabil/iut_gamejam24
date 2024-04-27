@@ -51,7 +51,7 @@ func update_sprite():
 	var y = 0
 	var scale_y = -1
 	
-	if readyFood == null:
+	if readyFood == null and contains.size() == 0:
 		$FoodSprite.texture = null
 		return
 	
