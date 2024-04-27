@@ -21,6 +21,7 @@ navigation_agent = NodePath("NavigationAgent2D")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
 z_as_relative = false
+position = Vector2(2.77778, -69.1177)
 scale = Vector2(0.714286, 0.714286)
 texture = ExtResource("2_d4x6n")
 
@@ -33,10 +34,10 @@ position = Vector2(0.5, 0.735294)
 shape = SubResource("RectangleShape2D_ppo3n")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -194.444
-offset_top = -273.529
-offset_right = 194.556
-offset_bottom = -175.529
+offset_left = -184.722
+offset_top = -333.824
+offset_right = 204.278
+offset_bottom = -235.824
 scale = Vector2(1, 1.29412)
 texture = ExtResource("3_dfsat")
 

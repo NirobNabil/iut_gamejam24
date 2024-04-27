@@ -245,6 +245,9 @@ func _on_pot_misspelled():
 func _on_table_reputation_loss():
 	print("called on repitaton loss ", reputation)
 	reputation -= 1
+	$Hud/ReputationContainer.text = str( int(reputation) )
+	if reputation == 0:
+		game_over()
 
 
 func _on_texture_button_pressed():

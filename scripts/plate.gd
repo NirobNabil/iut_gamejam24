@@ -39,6 +39,7 @@ func combine_food():
 	#### spice level is avg of total
 	new_spice_level = new_spice_level / contains.size()
 	food.init( new_base_type, new_hotness, new_spice_level, true )
+	food.add_texture($FoodSprite.texture, $FoodSprite.scale)
 	food.disable_food_sprite()
 	add_child(food)
 	readyFood = food

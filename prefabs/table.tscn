@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dc4tpqo3jmxc1"]
+[gd_scene load_steps=39 format=3 uid="uid://dc4tpqo3jmxc1"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
 [ext_resource type="AudioStream" uid="uid://gk7vv6h8x1jx" path="res://audio/order/Order2.wav" id="2_dqfqt"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://bjl0qsyr11eov" path="res://audio/angryCustomer/mubaAngry2.wav" id="30_b8qnw"]
 [ext_resource type="AudioStream" uid="uid://cjkv1qxhlnhol" path="res://audio/angryCustomer/mubaAngry3.wav" id="31_33tsq"]
 [ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="34_06fgg"]
+[ext_resource type="FontFile" uid="uid://b7o5eeiaa6mo1" path="res://fonts/Raleway-Light.ttf" id="35_qj7yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(146, 149)
@@ -42,6 +43,8 @@ size = Vector2(146, 149)
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ym8li"]
+font = ExtResource("35_qj7yc")
+font_size = 12
 font_color = Color(0, 0, 0, 1)
 
 [node name="table" type="Node2D"]
@@ -102,7 +105,7 @@ offset_left = -14.0
 offset_top = -132.0
 offset_right = 367.0
 offset_bottom = -34.0
-scale = Vector2(0.361827, 0.95712)
+scale = Vector2(0.434909, 0.95712)
 texture = ExtResource("34_06fgg")
 
 [node name="PatienceTimeLabel" type="Label" parent="."]
@@ -117,6 +120,8 @@ offset_left = -2.0
 offset_top = -126.0
 offset_right = 93.0
 offset_bottom = -103.0
+scale = Vector2(1.49215, 1.41826)
+text = "Chicken biryani"
 label_settings = SubResource("LabelSettings_ym8li")
 autowrap_mode = 2
 
