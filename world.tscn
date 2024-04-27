@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=41 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -29,7 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://b1cjita82b03m" path="res://textures/stair new.png" id="26_j5c1b"]
 [ext_resource type="Texture2D" uid="uid://dl0uldcx37bc2" path="res://textures/wall2.png" id="27_btkvh"]
 [ext_resource type="Texture2D" uid="uid://csukvumvaybmg" path="res://textures/cng.png" id="29_u7sw1"]
+[ext_resource type="Texture2D" uid="uid://dy53bsomddkvk" path="res://textures/ui/Popup.png" id="30_4c5eh"]
 [ext_resource type="FontFile" uid="uid://ddpwy4m1ig1ea" path="res://fonts/IMPACT.TTF" id="30_w4es2"]
+[ext_resource type="FontFile" uid="uid://b7o5eeiaa6mo1" path="res://fonts/Raleway-Light.ttf" id="31_7jn5h"]
 [ext_resource type="Texture2D" uid="uid://busis368lvp4d" path="res://textures/ui/return.png" id="31_ro1pd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8i0fv"]
@@ -58,6 +60,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1353, 550)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_f5cn2"]
 resource_name = "new_animation"
@@ -75,12 +89,29 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1353, 1007.15), Vector2(1353, -437.855)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a018x"]
 _data = {
 "RESET": SubResource("Animation_430sy"),
 "new_animation": SubResource("Animation_f5cn2")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyxk8"]
+font = ExtResource("31_7jn5h")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D" groups=["manager"]]
 position = Vector2(2, 143.855)
@@ -385,6 +416,31 @@ libraries = {
 "": SubResource("AnimationLibrary_a018x")
 }
 autoplay = "new_animation"
+
+[node name="TextureRect" type="TextureRect" parent="Cng"]
+visible = false
+offset_left = -93.9253
+offset_top = -298.146
+offset_right = 295.075
+offset_bottom = -200.146
+scale = Vector2(0.677949, 0.881328)
+texture = ExtResource("30_4c5eh")
+
+[node name="Label" type="Label" parent="Cng/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -10.0
+offset_right = 73.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "mmm smells good..."
+label_settings = SubResource("LabelSettings_kyxk8")
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 layer = 100
