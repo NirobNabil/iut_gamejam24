@@ -4,7 +4,7 @@ signal typed_spell_sig(typed_spell: String)
 signal penalty_activated()
 
 var score: int = 0
-var reputation: int = 10
+var reputation: int = 5
 
 var target: Node2D
 var target_reached: bool
@@ -17,6 +17,9 @@ var spell_collection = ["ZEST", "VAR", "VET", "STRESS", "TRES", "TREE", "WREC", 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hud/ScoreContainer.text = str(score)
+	$Hud/ReputationContainer.text = str(reputation)
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
