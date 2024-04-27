@@ -56,16 +56,17 @@ func get_base_type():
 			return ing.ing_name
 
 func set_food_ready():
+	isCooking = false
 	if cookedFood != null:
 		return
 	var food: Food = load("res://prefabs/food.tscn").instantiate()
 	food.init( get_base_type(), 100, 0 )
+	food.transform.origin = Vector2(0, -14.1)
 	for ing in contains:
 		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
 	add_child(cookedFood)
 	#cookedFood.get_node("sprite").texture = $sprite.texture
-	$StatusLabel.text = "food ready"
 	$sprite.texture = idle_texture
 	
 	deinitialize_spell()
@@ -84,7 +85,6 @@ func pickup_food():
 	var food = cookedFood
 	cookedFood = null
 	remove_child(food)
-	$StatusLabel.text = ""
 	stop_cooking()
 	return food
 

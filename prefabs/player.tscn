@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqbf2y6nhwg7c"]
+[gd_scene load_steps=7 format=3 uid="uid://cqbf2y6nhwg7c"]
 
 [ext_resource type="Script" path="res://scripts/player_nav.gd" id="1_snwn1"]
 [ext_resource type="Texture2D" uid="uid://dr86gxmc5rlp1" path="res://textures/Kazi Manna.png" id="2_d4x6n"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_3jhsq"]
-font_color = Color(1, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dy53bsomddkvk" path="res://textures/ui/Popup.png" id="3_dfsat"]
+[ext_resource type="FontFile" uid="uid://b7o5eeiaa6mo1" path="res://fonts/Raleway-Light.ttf" id="4_x0g1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppo3n"]
 size = Vector2(110.111, 63.2353)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3jhsq"]
+font = ExtResource("4_x0g1b")
+font_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent")]
+z_index = 1000
 scale = Vector2(0.72, 0.68)
 script = ExtResource("1_snwn1")
 navigation_agent = NodePath("NavigationAgent2D")
@@ -20,30 +24,62 @@ texture = ExtResource("2_d4x6n")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="carrying_label" type="Label" parent="."]
-offset_left = -62.5
-offset_top = 7.35294
-offset_right = 13.5
-offset_bottom = 30.3529
-scale = Vector2(1.64706, 1.64706)
-text = "spice"
-label_settings = SubResource("LabelSettings_3jhsq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="instruction_label" type="Label" parent="."]
-offset_left = -66.6667
-offset_top = -35.2941
-offset_right = 9.33338
-offset_bottom = -12.2941
-scale = Vector2(1.64706, 1.64706)
-text = "you suck"
-label_settings = SubResource("LabelSettings_3jhsq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0.735294)
 shape = SubResource("RectangleShape2D_ppo3n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -194.444
+offset_top = -273.529
+offset_right = 194.556
+offset_bottom = -175.529
+scale = Vector2(1, 1.29412)
+texture = ExtResource("3_dfsat")
+
+[node name="carrying_label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.38888
+offset_top = 16.1765
+offset_right = -1.38889
+offset_bottom = 36.1765
+grow_horizontal = 2
+scale = Vector2(1, 0.86)
+text = "spice "
+label_settings = SubResource("LabelSettings_3jhsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="dot_label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.015
+offset_bottom = -1.01499
+grow_horizontal = 2
+grow_vertical = 2
+text = "---------------------"
+label_settings = SubResource("LabelSettings_3jhsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="instruction_label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.14441e-05
+offset_top = 43.1818
+offset_bottom = 63.1818
+grow_horizontal = 2
+scale = Vector2(1, 0.87)
+text = "combination not ready"
+label_settings = SubResource("LabelSettings_3jhsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

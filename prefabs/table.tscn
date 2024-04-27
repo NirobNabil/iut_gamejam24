@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc4tpqo3jmxc1"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_4dm1x"]
-[ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="3_4umbo"]
+[ext_resource type="Texture2D" uid="uid://b6ouxm54ubvj3" path="res://textures/ui/circle.png" id="3_db1p6"]
 [ext_resource type="Texture2D" uid="uid://ccl7ng2lb1bo" path="res://textures/table.png" id="4_h5pt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
@@ -39,20 +39,21 @@ one_shot = true
 one_shot = true
 
 [node name="PatienceBar" type="TextureProgressBar" parent="."]
-offset_left = -43.0
-offset_top = -81.0
-offset_right = 225.0
-offset_bottom = -64.0
-scale = Vector2(0.319999, 1)
+offset_left = -53.0
+offset_top = -87.0
+offset_right = 215.0
+offset_bottom = -15.0
+scale = Vector2(0.439997, 0.360001)
 value = 50.0
 fill_mode = 4
-texture_under = ExtResource("3_4umbo")
-texture_over = ExtResource("3_4umbo")
-texture_progress = ExtResource("3_4umbo")
+texture_under = ExtResource("3_db1p6")
+texture_over = ExtResource("3_db1p6")
+texture_progress = ExtResource("3_db1p6")
 tint_over = Color(1, 0, 0, 0)
 tint_progress = Color(1, 0.00999999, 0.00999999, 1)
 
 [node name="Patience" type="Label" parent="PatienceBar"]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 50.0002

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b33mmb8y6tx57"]
 
 [ext_resource type="Script" path="res://scripts/plate.gd" id="1_fqj87"]
-[ext_resource type="Texture2D" uid="uid://bwxg7ntjktlys" path="res://textures/Ricebowl.png" id="2_1nnao"]
+[ext_resource type="Texture2D" uid="uid://dcwoxcptvhqg5" path="res://textures/cooked_rice.png" id="2_i63tw"]
 [ext_resource type="Texture2D" uid="uid://76se7w78imjc" path="res://textures/pokecamp_curry_l_24.png" id="3_sgut1"]
 [ext_resource type="Texture2D" uid="uid://w5gvo5bql665" path="res://textures/chichken.png" id="4_430on"]
 [ext_resource type="Texture2D" uid="uid://bsmjxi34nqyap" path="res://textures/pokecamp_curry_m_19.png" id="4_l0gq5"]
@@ -13,7 +13,7 @@ size = Vector2(118, 127)
 [node name="Plate" type="Node2D"]
 scale = Vector2(0.823222, 0.88)
 script = ExtResource("1_fqj87")
-rice_texture = ExtResource("2_1nnao")
+rice_texture = ExtResource("2_i63tw")
 meat_texture = ExtResource("3_sgut1")
 chicken_texture = ExtResource("4_430on")
 rice_meat_texture = ExtResource("4_l0gq5")
@@ -31,6 +31,8 @@ position = Vector2(1, 20.5)
 shape = SubResource("RectangleShape2D_2voae")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="FoodSprite" type="Sprite2D" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

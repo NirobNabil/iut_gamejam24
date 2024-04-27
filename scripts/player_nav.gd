@@ -8,7 +8,7 @@ var movement_target: Vector2
 
 func _input(event):
 	if event is InputEventMouseButton:
-		$instruction_label.text = ""
+		$TextureRect/instruction_label.text = ""
 		movement_target = event.position
 		navigation_agent.set_target_position(movement_target) 
 
@@ -36,9 +36,9 @@ func _process(delta):
 	#print(navigation_agent.get_next_path_position())
 	#print(global_position)
 	if carrying != null:
-		$carrying_label.text = carrying.obj_name
+		$TextureRect/carrying_label.text = carrying.obj_name
 	else:
-		$carrying_label.text = "empty hand"
+		$TextureRect/carrying_label.text = "empty hand"
 	pass
 
 func _physics_process(delta):
@@ -64,7 +64,7 @@ func _on_velocity_computed(safe_velocity: Vector2):
 
 
 func set_info(note):
-	$instruction_label.text = note
+	$TextureRect/instruction_label.text = note
 
 var carrying: Node2D = null
 
