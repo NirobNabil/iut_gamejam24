@@ -25,6 +25,7 @@ const BIRIYANI_TYPES = ["Chicken", "Beef", "Mutton"]
 
 const patience_time_arr = [ 5, 4 ]
 var patience_time_prob = [ .2, .8 ]
+var current_patience_time: float = 0.0
 
 const progress_timer_rel = {
 	10: [ 0.2, 0.8 ],
@@ -40,6 +41,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#print($PatienceTimer.time_left)
 	$PatienceBar.value = $PatienceTimer.time_left
 	
 

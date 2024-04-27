@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=35 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://b1cjita82b03m" path="res://textures/stair new.png" id="26_j5c1b"]
 [ext_resource type="Texture2D" uid="uid://dl0uldcx37bc2" path="res://textures/wall2.png" id="27_btkvh"]
 [ext_resource type="Texture2D" uid="uid://csukvumvaybmg" path="res://textures/cng.png" id="29_u7sw1"]
+[ext_resource type="FontFile" uid="uid://ddpwy4m1ig1ea" path="res://fonts/IMPACT.TTF" id="30_w4es2"]
+[ext_resource type="Texture2D" uid="uid://busis368lvp4d" path="res://textures/ui/return.png" id="31_ro1pd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8i0fv"]
 vertices = PackedVector2Array(967, 627, 931, 627, 967, 622, 396, 116, 720, 209, 454, 204, 288, 182, 288, 88, 296, 293, 453, 432, 907, 64, 908, 627, 720, 435, 830, 108, 522, 627, 521, 569, 456, 571, 295, 394, 455, 627, 185, 294, 196, 174, 833, 39, 971, 39, 970, 64, 394, 41, 8, 43, 190, 91, 9, 627, 185, 391)
@@ -176,7 +178,7 @@ position = Vector2(575.5, 65.5)
 shape = SubResource("RectangleShape2D_476d0")
 
 [node name="TableContainer" type="Node2D" parent="."]
-position = Vector2(0, -39)
+position = Vector2(0, 8)
 
 [node name="table" parent="TableContainer" instance=ExtResource("9_gsfln")]
 position = Vector2(1048, 89)
@@ -315,6 +317,71 @@ position = Vector2(1353, 550)
 scale = Vector2(0.628159, 0.628159)
 texture = ExtResource("29_u7sw1")
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="Control" type="Control" parent="GameOver"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOver/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = -109.0
+offset_right = 208.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8wnas")
+expand_mode = 2
+
+[node name="GameOver" type="Label" parent="GameOver/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -235.0
+offset_right = 288.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.901961, 0.180392, 0, 1)
+theme_override_fonts/font = ExtResource("30_w4es2")
+theme_override_font_sizes/font_size = 131
+text = "GAME OVER
+Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="GameOver/Control"]
+self_modulate = Color(0.901961, 0.180392, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 137.0
+offset_right = 113.0
+offset_bottom = 363.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("31_ro1pd")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="penalty_activated" from="." to="ingredient_table" method="_on_penalty_activated"]
 [connection signal="penalty_activated" from="." to="cooking_table/pot3" method="_on_penalty_activated"]
 [connection signal="penalty_activated" from="." to="cooking_table/pot4" method="_on_penalty_activated"]
@@ -381,3 +448,4 @@ texture = ExtResource("29_u7sw1")
 [connection signal="misspelled" from="cooking_table/pot2" to="." method="_on_pot_misspelled"]
 [connection signal="selected" from="cooking_table/pot2" to="." method="_on_pot_selected"]
 [connection signal="spell_activated" from="cooking_table/pot2" to="." method="_on_pot_spell_activated"]
+[connection signal="pressed" from="GameOver/Control/TextureButton" to="." method="_on_texture_button_pressed"]

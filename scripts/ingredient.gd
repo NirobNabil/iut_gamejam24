@@ -27,12 +27,8 @@ func init(res: ing_res):
 	spice_level = res.spice_level
 	$SpiceLevelIndicator.value = spice_level
 	get_node("sprite").texture = res.texture
-	if ing_name in ["mutton"]:
-		factor = tex_size / ($sprite.get_texture().get_width() * $sprite.scale.x)
-		$sprite.scale *= factor
-	else:
-		factor = 72.0 / ($sprite.get_texture().get_width() * $sprite.scale.x)
-		$sprite.scale *= factor
+	factor = 72.0 / ($sprite.get_texture().get_width() * $sprite.scale.x)
+	$sprite.scale *= factor
 	
 	$Label.text = ing_name
 

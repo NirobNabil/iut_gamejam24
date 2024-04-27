@@ -177,6 +177,8 @@ func check_and_set_reached(node: Node2D):
 	else:
 		target_reached = false
 
+func game_over():
+	$GameOver.visible = true
 
 
 func _on_ingredient_table_ing_area_entered(ing_node):
@@ -243,3 +245,7 @@ func _on_pot_misspelled():
 func _on_table_reputation_loss():
 	print("called on repitaton loss ", reputation)
 	reputation -= 1
+
+
+func _on_texture_button_pressed():
+	get_tree().change_scene_to_file("res://world.tscn")

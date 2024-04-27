@@ -6,6 +6,7 @@ signal entered_area(fan_node)
 signal selected_fan(fan_node)
 
 @export var texture: Texture2D
+@export var rotate_speed: float = 20.0
 var contains: Node2D = null
 
 const cooldown_time = 20.0
@@ -18,6 +19,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$sprite/Sprite2D.rotate(rotate_speed*delta)	
+	
 	if contains != null:
 		contains.set_hotness( max( 0, contains.hotness - calc_hotness_delta(delta) ) )
 	pass
