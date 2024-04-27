@@ -64,7 +64,7 @@ func set_food_ready():
 		food.set_spice_level( food.spice_level + ing.spice_level )  
 	cookedFood = food
 	add_child(cookedFood)
-	cookedFood.get_node("sprite").texture = $sprite.texture
+	#cookedFood.get_node("sprite").texture = $sprite.texture
 	$StatusLabel.text = "food ready"
 	$sprite.texture = idle_texture
 	
@@ -75,7 +75,7 @@ func stop_cooking():
 	contains = []
 	isCooking = false
 	$sprite.texture = idle_texture
-	$sprite.scale = initial_scale
+	#$sprite.scale = initial_scale
 	
 	for part in $Smoke.get_children():
 		part.emitting = false

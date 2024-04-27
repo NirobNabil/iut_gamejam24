@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bsge5qtmtgeqp"]
+[gd_scene load_steps=25 format=3 uid="uid://bsge5qtmtgeqp"]
 
 [ext_resource type="PackedScene" uid="uid://ddiha2u3vtvio" path="res://prefabs/pot.tscn" id="1_c0c68"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_f4ycd"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://5whx3uiu5mx3" path="res://prefabs/fan.tscn" id="12_mu1qa"]
 [ext_resource type="PackedScene" uid="uid://b33mmb8y6tx57" path="res://prefabs/plate.tscn" id="13_m5j6u"]
 [ext_resource type="PackedScene" uid="uid://clkdu3i2jp260" path="res://prefabs/ingMarker.tscn" id="13_u5coh"]
+[ext_resource type="Texture2D" uid="uid://d3tkvepflhwnf" path="res://textures/plate_holder2.png" id="17_tb3px"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8i0fv"]
 vertices = PackedVector2Array(967, 627, 931, 627, 967, 622, 396, 116, 720, 209, 454, 204, 288, 182, 288, 88, 296, 293, 453, 432, 907, 64, 908, 627, 720, 435, 830, 108, 522, 627, 521, 569, 456, 571, 295, 394, 455, 627, 185, 294, 196, 174, 833, 39, 971, 39, 970, 64, 394, 41, 8, 43, 190, 91, 9, 627, 185, 391)
@@ -43,16 +44,15 @@ scale = Vector2(0.244798, 0.244798)
 texture = ExtResource("2_8wnas")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_top = 117.0
-offset_right = 3598.0
-offset_bottom = 1680.0
+visible = false
+offset_left = 500.0
+offset_top = 110.0
+offset_right = 4098.0
+offset_bottom = 1673.0
 scale = Vector2(0.336029, 0.336029)
 texture = ExtResource("3_x3g48")
 expand_mode = 1
 stretch_mode = 1
-visible = false
-position = Vector2(500, 110)
-texture = ExtResource("3_x3g48")
 
 [node name="Floor" type="Sprite2D" parent="."]
 visible = false
@@ -140,7 +140,7 @@ position = Vector2(703, 606)
 [node name="Sprite2D" type="Sprite2D" parent="PlateContainer"]
 position = Vector2(569, 97)
 scale = Vector2(2.06, 1.82813)
-; texture = ExtResource("15_xe2bq")
+texture = ExtResource("17_tb3px")
 
 [node name="Plate1" parent="PlateContainer" instance=ExtResource("13_m5j6u")]
 position = Vector2(456, 64)
