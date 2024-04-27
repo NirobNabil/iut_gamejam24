@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2al3ke2am25m" path="res://textures/meat.png" id="2_d1mqo"]
 [ext_resource type="Texture2D" uid="uid://coxfmtegxn82n" path="res://textures/spice.jpg" id="3_y7na8"]
 [ext_resource type="Texture2D" uid="uid://bsnmva1farg28" path="res://textures/white.jpeg" id="4_0a7la"]
-[ext_resource type="Texture2D" uid="uid://dy0iwgifv31eh" path="res://textures/01_dish.png" id="5_ndd6m"]
+[ext_resource type="Texture2D" uid="uid://b6jc2pudc5j8c" path="res://textures/banned.png" id="5_c27pa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]
 size = Vector2(136, 50)
@@ -49,7 +49,8 @@ text = "MORICh"
 
 [node name="blocked_sprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("5_ndd6m")
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_c27pa")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

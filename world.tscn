@@ -45,7 +45,7 @@ size = Vector2(367, 89)
 size = Vector2(248, 327)
 
 [node name="World" type="Node2D" groups=["manager"]]
-position = Vector2(2, 3)
+position = Vector2(2, 94)
 script = ExtResource("1_f4ycd")
 
 [node name="Wall" type="Sprite2D" parent="."]

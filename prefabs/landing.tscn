@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3tl3fw0je7ic"]
+[gd_scene load_steps=26 format=3 uid="uid://d3tl3fw0je7ic"]
 
 [ext_resource type="Script" path="res://scripts/landing.gd" id="1_bvlur"]
 [ext_resource type="Texture2D" uid="uid://njflrebj0lsx" path="res://textures/Landing_bg_1.png" id="1_pkflq"]
@@ -7,9 +7,23 @@
 [ext_resource type="AudioStream" uid="uid://dfg85umkqtmyd" path="res://sounds/swoosh.wav" id="4_8fqwp"]
 [ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="6_swixg"]
 [ext_resource type="Texture2D" uid="uid://7kwo7thfw21x" path="res://textures/ui/Button_Rect_press.png" id="7_7xpj6"]
+[ext_resource type="Texture2D" uid="uid://dr86gxmc5rlp1" path="res://textures/Kazi Manna.png" id="8_i00eo"]
+[ext_resource type="Texture2D" uid="uid://cmbqxmpx4hiqc" path="res://textures/eating_table.png" id="9_w7o44"]
+[ext_resource type="Texture2D" uid="uid://ie43xt4kgsm4" path="res://textures/hot spice.png" id="10_d6625"]
+[ext_resource type="Texture2D" uid="uid://bhgrs2v1nmvxu" path="res://textures/onion.png" id="11_7ugjg"]
+[ext_resource type="Texture2D" uid="uid://csq08i6e2abgo" path="res://textures/potato.png" id="12_o6rqd"]
+[ext_resource type="Texture2D" uid="uid://l1rffq2fcjb" path="res://textures/rice_raw_yellow.png" id="13_fspb6"]
+[ext_resource type="Texture2D" uid="uid://b4yf2cetveagr" path="res://textures/chicken_raw.png" id="14_okr56"]
+[ext_resource type="Texture2D" uid="uid://c2h24pscpg5w1" path="res://textures/beef_raw_1.png" id="15_ag3kp"]
+[ext_resource type="Texture2D" uid="uid://cgxd3twe3jqk0" path="res://textures/cooking_pot_on_fire_black.png" id="16_biqnu"]
+[ext_resource type="Texture2D" uid="uid://co7n86vkjmiis" path="res://textures/plate_minimal.png" id="17_dcbwk"]
+[ext_resource type="Texture2D" uid="uid://dcwoxcptvhqg5" path="res://textures/cooked_rice.png" id="18_wj650"]
+[ext_resource type="Texture2D" uid="uid://cpmutbguqmn7n" path="res://textures/pokecamp_curry_m_24.png" id="19_54g23"]
+[ext_resource type="Texture2D" uid="uid://76se7w78imjc" path="res://textures/pokecamp_curry_l_24.png" id="20_mj1b3"]
+[ext_resource type="FontFile" uid="uid://ddpwy4m1ig1ea" path="res://fonts/IMPACT.TTF" id="21_xs7bd"]
 
 [sub_resource type="Animation" id="Animation_i5jya"]
-length = 0.001
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +31,10 @@ tracks/0/path = NodePath("Kazi:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-843, 104)]
+"values": [Vector2(-843, 104), Vector2(538, 104)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,10 +43,10 @@ tracks/1/path = NodePath("Biriyani:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1637, 236)]
+"values": [Vector2(1637, 236), Vector2(534, 236)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -72,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(5.85634, 5.85634),
 "update": 0,
-"values": [Vector2(-843, 104), Vector2(360.5, 104)]
+"values": [Vector2(-843, 104), Vector2(514, 104)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +98,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(5.85634, 5.85634),
 "update": 0,
-"values": [Vector2(1637, 236), Vector2(360.5, 236)]
+"values": [Vector2(1637, 236), Vector2(511, 236)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -108,7 +122,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 693), Vector2(0, 405)]
+"values": [Vector2(0, 1192), Vector2(0, 405)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c46hs"]
@@ -138,10 +152,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -773.0
-offset_top = -423.0
-offset_right = 859.0
-offset_bottom = 495.0
+offset_left = -1031.0
+offset_top = -568.0
+offset_right = 1117.0
+offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_pkflq")
@@ -155,10 +169,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -843.0
-offset_top = 104.0
-offset_right = -412.001
-offset_bottom = 258.0
+offset_left = -1578.0
+offset_top = -326.0
+offset_right = -1147.0
+offset_bottom = -172.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v7uyd")
@@ -172,10 +186,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1637.0
-offset_top = 236.0
-offset_right = 2068.0
-offset_bottom = 390.0
+offset_left = 902.0
+offset_top = -194.0
+offset_right = 1333.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_4p01x")
@@ -193,15 +207,233 @@ stream = ExtResource("4_8fqwp")
 volume_db = -11.271
 pitch_scale = 0.89
 
+[node name="Tutorial" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BG2" type="TextureRect" parent="Tutorial"]
+modulate = Color(1, 0.678431, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -951.0
+offset_top = -523.0
+offset_right = 1037.0
+offset_bottom = 595.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pkflq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="KaziManna" type="Sprite2D" parent="Tutorial"]
+position = Vector2(125.75, 240)
+scale = Vector2(0.545714, 0.545714)
+texture = ExtResource("8_i00eo")
+flip_h = true
+
+[node name="KaziManna3" type="Sprite2D" parent="Tutorial"]
+position = Vector2(249, 582)
+scale = Vector2(0.545714, 0.545714)
+texture = ExtResource("8_i00eo")
+
+[node name="KaziManna2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(1247.27, 194)
+scale = Vector2(0.545714, 0.545714)
+texture = ExtResource("8_i00eo")
+
+[node name="EatingTable" type="Sprite2D" parent="Tutorial"]
+position = Vector2(292.006, 270)
+scale = Vector2(0.172367, 0.172367)
+texture = ExtResource("9_w7o44")
+
+[node name="EatingTable2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(182, 643)
+scale = Vector2(0.172367, 0.172367)
+texture = ExtResource("9_w7o44")
+
+[node name="HotSpice" type="Sprite2D" parent="Tutorial"]
+position = Vector2(326.006, 225)
+scale = Vector2(0.121673, 0.121673)
+texture = ExtResource("10_d6625")
+
+[node name="Onion" type="Sprite2D" parent="Tutorial"]
+position = Vector2(305.006, 221)
+scale = Vector2(0.101563, 0.101563)
+texture = ExtResource("11_7ugjg")
+
+[node name="Potato" type="Sprite2D" parent="Tutorial"]
+position = Vector2(302.006, 234)
+scale = Vector2(0.132813, 0.132813)
+texture = ExtResource("12_o6rqd")
+
+[node name="RiceRawYellow" type="Sprite2D" parent="Tutorial"]
+position = Vector2(270.006, 220)
+texture = ExtResource("13_fspb6")
+
+[node name="ChickenRaw" type="Sprite2D" parent="Tutorial"]
+position = Vector2(264.006, 232)
+scale = Vector2(0.014197, 0.014197)
+texture = ExtResource("14_okr56")
+
+[node name="BeefRaw1" type="Sprite2D" parent="Tutorial"]
+position = Vector2(267.006, 241)
+scale = Vector2(0.0250348, 0.0250348)
+texture = ExtResource("15_ag3kp")
+
+[node name="CookingPotOnFireBlack" type="Sprite2D" parent="Tutorial"]
+position = Vector2(1127.27, 264)
+scale = Vector2(0.120124, 0.120124)
+texture = ExtResource("16_biqnu")
+
+[node name="PlateMinimal" type="Sprite2D" parent="Tutorial"]
+position = Vector2(925.5, 598)
+scale = Vector2(0.24783, 0.135654)
+texture = ExtResource("17_dcbwk")
+
+[node name="CookedRice" type="Sprite2D" parent="Tutorial"]
+position = Vector2(930, 537)
+scale = Vector2(0.312925, 0.312925)
+texture = ExtResource("18_wj650")
+
+[node name="PokecampCurryL24" type="Sprite2D" parent="Tutorial"]
+position = Vector2(184, 597)
+scale = Vector2(0.0793104, 0.0793104)
+texture = ExtResource("20_mj1b3")
+
+[node name="PokecampCurryM24" type="Sprite2D" parent="Tutorial"]
+position = Vector2(1213, 597)
+scale = Vector2(0.353488, 0.353488)
+texture = ExtResource("19_54g23")
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 45.0
+offset_right = 209.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(1, 0.831373, 0, 1)
+theme_override_fonts/font = ExtResource("21_xs7bd")
+theme_override_font_sizes/font_size = 71
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1207.0
+offset_top = 15.0
+offset_right = 1247.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(1, 0.831373, 0, 1)
+theme_override_fonts/font = ExtResource("21_xs7bd")
+theme_override_font_sizes/font_size = 71
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1207.0
+offset_top = 380.0
+offset_right = 1247.0
+offset_bottom = 467.0
+theme_override_colors/font_color = Color(1, 0.831373, 0, 1)
+theme_override_fonts/font = ExtResource("21_xs7bd")
+theme_override_font_sizes/font_size = 71
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 398.0
+offset_right = 199.0
+offset_bottom = 485.0
+theme_override_colors/font_color = Color(1, 0.831373, 0, 1)
+theme_override_fonts/font = ExtResource("21_xs7bd")
+theme_override_font_sizes/font_size = 71
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoBack" type="TextureButton" parent="Tutorial"]
+self_modulate = Color(0.968627, 0.580392, 0.117647, 1)
+z_index = 15
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.0
+offset_top = 675.0
+offset_right = 152.0
+offset_bottom = 753.0
+grow_horizontal = 2
+texture_normal = ExtResource("6_swixg")
+texture_pressed = ExtResource("7_7xpj6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/GoBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.984314, 0.984314, 0.662745, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.266667, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_dgmnu")
+theme_override_font_sizes/font_size = 52
+text = "Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.0
+offset_top = 64.0
+offset_right = 231.0
+offset_bottom = 662.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("21_xs7bd")
+theme_override_font_sizes/normal_font_size = 36
+text = "1. Take rice and meat from the ingredients table and cook them separately.
+2. Add spice during cooking process to increase spiciness.
+3. Combine rice and meat to make biriyani
+4. Cool down the dish under the fan if needed
+5. Serve before the time runs out!"
+
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 693.0
-offset_right = 3456.0
-offset_bottom = 693.0
+offset_top = -167.0
+offset_bottom = -167.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -279,8 +511,12 @@ text = "How to Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="button_down" from="Tutorial/GoBack" to="." method="_on_play_button_down" binds= [NodePath("./Tutorial/GoBack")]]
+[connection signal="button_up" from="Tutorial/GoBack" to="." method="_on_play_button_up" binds= [NodePath("./Tutorial/GoBack")]]
+[connection signal="pressed" from="Tutorial/GoBack" to="." method="_on_go_back_pressed"]
 [connection signal="button_down" from="Buttons/Play" to="." method="_on_play_button_down" binds= [NodePath("./Buttons/Play")]]
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_play_button_up" binds= [NodePath("./Buttons/Play")]]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="button_down" from="Buttons/Tuto" to="." method="_on_play_button_down" binds= [NodePath("./Buttons/Tuto")]]
 [connection signal="button_up" from="Buttons/Tuto" to="." method="_on_play_button_up" binds= [NodePath("./Buttons/Tuto")]]
+[connection signal="pressed" from="Buttons/Tuto" to="." method="_on_tuto_pressed"]
