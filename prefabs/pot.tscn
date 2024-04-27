@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://be6c1d41fdxsi" path="res://textures/stove_idle.png" id="3_1hgip"]
 [ext_resource type="Texture2D" uid="uid://be7p5itiyc2l" path="res://textures/cooking_pot_black_1.png" id="3_g3x74"]
 [ext_resource type="Texture2D" uid="uid://shngprdusmu5" path="res://textures/ui/Button_Rect_default.png" id="4_p4qoe"]
-[ext_resource type="PackedScene" uid="uid://caqkbcapp01gr" path="res://prefabs/smoke.tscn" id="5_4w46n"]
+[ext_resource type="PackedScene" path="res://prefabs/smoke.tscn" id="5_4w46n"]
 [ext_resource type="FontFile" uid="uid://ddpwy4m1ig1ea" path="res://fonts/IMPACT.TTF" id="7_33uyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2voae"]

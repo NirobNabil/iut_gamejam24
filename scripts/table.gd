@@ -23,7 +23,7 @@ const SPICE_LEVELS = Super.SPICE_LEVELS
 const HOTNESS_LEVELS = [0, 25, 50, 100]
 const BIRIYANI_TYPES = ["Chicken", "Beef", "Mutton"]
 
-const patience_time_arr = [ 5, 4 ]
+const patience_time_arr = [ 25, 40 ]
 var patience_time_prob = [ .2, .8 ]
 var current_patience_time: float = 0.0
 
@@ -81,6 +81,7 @@ func quantized_equal(a:int, b:int, c: int, d: int, e: String, f: String):
 	if (a in range(b-10, b+10)) and (c in range(d-10, d+10)) and (f.to_lower() in e.split("_")): return true
 	return false
 
+var rng = RandomNumberGenerator.new()
 func put_food(food_node):
 	$PatienceTimer.stop()
 	print("put food called")
@@ -102,10 +103,14 @@ func put_food(food_node):
 	
 	if quantized_equal( food_node.spice_level, requested_spice_level, food_node.hotness, requested_hotness_level, food.obj_name, requested_biriyani_type ):
 		score_obtained.emit(50)
+		$AudioStreamPlayer2D.stream = happy_soundtracks[rng.randi_range(0, happy_soundtracks.size()-1)]
 		$CustomerRequest.text = "thank you"
 	else:
 		score_obtained.emit(10)
+		$AudioStreamPlayer2D.stream = angry_soundtracks[rng.randi_range(0, angry_soundtracks.size()-1)]
 		$CustomerRequest.text = "vodox rante ashse"
+
+	$AudioStreamPlayer2D.play()
 	initiate_customer_request()
 	return "success"
 
@@ -118,14 +123,23 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_pressed():
 		selected.emit(self)
 
-var rng = RandomNumberGenerator.new()
 func _on_timer_timeout():
 	var rand = get_random_time()
 	$PatienceTimer.start( rand )
 	$PatienceBar.max_value = rand
+	
 	requested_spice_level = SPICE_LEVELS[rng.randi_range(0, SPICE_LEVELS.size() - 1)]
 	requested_hotness_level = HOTNESS_LEVELS[rng.randi_range(0, HOTNESS_LEVELS.size() - 1)]
-	requested_biriyani_type = BIRIYANI_TYPES[rng.randi_range(0, BIRIYANI_TYPES.size() - 1)]
+	var biryani_type = BIRIYANI_TYPES[rng.randi_range(0, BIRIYANI_TYPES.size() - 1)]
+	requested_biriyani_type = biryani_type
+	if requested_biriyani_type == "Beef":
+		$AudioStreamPlayer2D.stream = order_soundtracks[rng.randi_range(2, order_soundtracks.size()-1)]
+	elif requested_biriyani_type == "Mutton":
+		$AudioStreamPlayer2D.stream = order_soundtracks[rng.randi_range(2, order_soundtracks.size()-1)]
+	else:
+		$AudioStreamPlayer2D.stream = order_soundtracks[rng.randi_range(0, 1)]
+		
+	$AudioStreamPlayer2D.play()
 	$CustomerRequest.text = requested_biriyani_type + " Biryani\n" + str(requested_spice_level) + "% spicy\n" + str(requested_hotness_level) + "% hot"
 
 
