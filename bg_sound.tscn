@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu1dc238cinnl"]
+[gd_scene load_steps=2 format=3 uid="uid://c0thda4gt1pi6"]
 
 [ext_resource type="AudioStream" uid="uid://bjjee1tv4kc3q" path="res://audio/rastar_noise.mp3" id="1_v12qj"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_v12qj")
-volume_db = -38.415
+volume_db = -24.415
 autoplay = true

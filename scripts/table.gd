@@ -47,7 +47,7 @@ func _process(delta):
 	
 
 func initiate_customer_request():
-	$Timer.start(2)
+	$Timer.start(rng.randi_range(0,40))
 
 func get_random_time():
 	var rand: float = rng.randf()
