@@ -37,7 +37,7 @@ const progress_timer_rel = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$ExclaimSprite.visible = false
-	initiate_customer_request()
+	$Timer.start(randf_range(0, 4))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,7 +47,7 @@ func _process(delta):
 	
 
 func initiate_customer_request():
-	$Timer.start(rng.randi_range(0,40))
+	$Timer.start(rng.randi_range(0,4))
 
 func get_random_time():
 	var rand: float = rng.randf()
